@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TempConvert - Konversi Suhu</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="halaman1.html" class="logo">🌡️ TempConvert</a>
+        <div class="nav-links">
+            <a href="halaman1.html">Home</a>
+            <a href="halaman2.html" class="active">Konversi Suhu</a>
+            <a href="halaman3.html">Tentang</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="section-heading">
+            <h1>Konversi Suhu</h1>
+            <p>
+                Masukkan nilai suhu dan tujuan konversi
+            </p>
+        </section>
+
+        <!-- Formulir Konversi -->
+        <section class="card converter-card">
+            <form id="converterForm">
+                <div class="form-group">
+                    <label for="temperature">Masukkan Suhu</label>
+
+                    <input
+                        type="number"
+                        id="temperature"
+                        step="any"
+                        placeholder="Contoh: 30"
+                        required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fromUnit">Dari Satuan</label>
+                        <select id="fromUnit">
+                            <option value="C">Celsius (°C)</option>
+                            <option value="F">Fahrenheit (°F)</option>
+                            <option value="K">Kelvin (K)</option>
+                            <option value="R">Reamur (°Ré)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="toUnit">Ke Satuan</label>
+                        <select id="toUnit">
+                            <option value="F">Fahrenheit (°F)</option>
+                            <option value="C">Celsius (°C)</option>
+                            <option value="K">Kelvin (K)</option>
+                            <option value="R">Reamur (°Ré)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="button">
+                    Konversi Sekarang
+                </button>
+                <p
+                    id="errorMessage"
+                    class="error-message"
+                    aria-live="polite"
+                ></p>
+            </form>
+        </section>
+
+        <!-- Kotak Hasil Konversi -->
+        <section class="card result-card" id="resultCard" hidden>
+            <h2>Hasil Konversi</h2>
+            <p id="resultMessage" class="result-message"></p>
+            <div id="resultValue" class="result-value"></div>
+            <div class="result-actions">
+                <button
+                    type="button"
+                    class="button"
+                    id="resetButton"
+                >Konversi Lagi
+                </button>
+
+                <button
+                    type="button"
+                    class="button delete-button"
+                    id="deleteButton"
+                > Hapus Hasil
+                </button>
+            </div>
+        </section>
+
+    </main>
+    <footer class="footer">
+        <p>&copy; 2026 Kelompok 3 </p>
+    </footer>
+</body>
+</html>
