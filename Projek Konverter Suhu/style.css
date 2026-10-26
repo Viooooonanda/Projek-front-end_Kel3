@@ -227,6 +227,64 @@ tbody tr:hover {
     background-color: #e5f2fb;
 }
 
+/* FAKTA, REFERENSI, SUMBER DAYA */
+.sumber {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+    margin-top: 0;
+}
+
+.sumber .card {
+    margin-bottom: 0;
+    padding: 26px;
+    background-color: #ffffff;
+    border: 1px solid #e1ebf4;
+    border-radius: 9px;
+    box-shadow: 0 4px 15px rgba(45, 78, 110, 0.06);
+}
+
+.sumber .card:hover{
+    transform: translateY(5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    background-color: #eaf3f9;;
+}
+
+.sumber h3 {
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #4399e8;
+    color: #17365d;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.sumber ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #496681;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.sumber li {
+    margin-bottom: 12px;
+}
+
+.sumber li:last-child {
+    margin-bottom: 0;
+}
+
+.sumber a {
+    color: #151515;
+}
+
+.sumber a:hover {
+    text-decoration: underline;
+    color: #267bc8;
+}
+
 /*  FORM KONVERSI */
 .converter-card {
     padding: 32px;
@@ -418,6 +476,10 @@ tbody tr:hover {
     .container {
         width: 92%;
         margin-top: 26px;
+    }
+    
+    .sumber {
+        grid-template-columns: 1fr;
     }
 
     .section-heading h1 {
