@@ -1,516 +1,515 @@
  /*PENGATURAN DASAR*/
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    color: #17365d;
-    background-color: #eaf3f9;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button,
-input,
-select {
-    font: inherit;
-}
-
-/* NAVBAR */
-.navbar {
-    width: 100%;
-    min-height: 76px;
-    padding: 15px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #dce8f3;
-}
-
-.logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #17365d;
-    font-size: 21px;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
-
-.nav-links a {
-    padding: 8px 0;
-    color: #496681;
-    font-size: 14px;
-    border-bottom: 2px solid transparent;
-    transition: 0.2s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: #287ed1;
-    border-bottom-color: #287ed1;
-}
-
-/* HOME DAN GAMBAR */
-.home-page {
-    width: 90%;
-    max-width: 1250px;
-    min-height: 430px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    margin: 28px auto 42px;
-    border-radius: 8px;
-    background-color: #17365d;
-}
-
-.home-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-}
-
-.home-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        90deg,
-        rgba(13, 43, 63, 0.88) 0%,
-        rgba(13, 43, 63, 0.58) 50%,
-        rgba(13, 43, 63, 0.08) 100%
-    );
-    z-index: 1;
-}
-
-.home-content {
-    position: relative;
-    z-index: 2;
-    width: 60%;
-    padding: 48px;
-    color: #ffffff;
-}
-
-.home-content h1 {
-    margin: 0 0 18px;
-    font-size: clamp(32px, 4vw, 46px);
-    line-height: 1.2;
-}
-
-.home-content p {
-    max-width: 450px;
-    margin: 0 0 25px;
-    color: #edf5fb;
-    line-height: 1.8;
-}
-
-/* TOMBOL*/
-.button {
-    display: inline-block;
-    padding: 12px 23px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4399e8;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.button:hover {
-    background-color: #267bc8;
-}
-
-/* KONTEN DAN JUDUL*/
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin: 35px auto 45px;
-}
-
-.section-heading {
-    margin-bottom: 22px;
-}
-
-.section-heading h1 {
-    margin: 0 0 8px;
-    color: #17365d;
-    font-size: 32px;
-    line-height: 1.3;
-}
-
-.section-heading p {
-    margin: 0;
-    color: #607b94;
-}
-
-/* KARTU */
-.card {
-    margin-bottom: 24px;
-    padding: 30px;
-    background-color: #ffffff;
-    border: 1px solid #e1ebf4;
-    border-radius: 9px;
-    box-shadow: 0 4px 15px rgba(45, 78, 110, 0.06);
-}
-
-.card h2 {
-    margin: 0 0 16px;
-    font-size: 23px;
-    line-height: 1.4;
-}
-
-.card p {
-    margin-top: 0;
-}
-
-/*  TABEL RUMUS SUHU */
-.formula-section {
-    margin-top: 0;
-}
-
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #ffffff;
-}
-
-th,
-td {
-    padding: 13px 16px;
-    border: 1px solid #d6e3ef;
-    text-align: left;
-    vertical-align: middle;
-}
-
-th {
-    background-color: #173b57;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f1f7fb;
-}
-
-tbody tr:hover {
-    background-color: #e5f2fb;
-}
-
-/* FAKTA, REFERENSI, SUMBER DAYA */
-.sumber {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-    align-items: stretch;
-    margin-top: 0;
-}
-
-.sumber .card {
-    margin-bottom: 0;
-    padding: 26px;
-    background-color: #ffffff;
-    border: 1px solid #e1ebf4;
-    border-radius: 9px;
-    box-shadow: 0 4px 15px rgba(45, 78, 110, 0.06);
-}
-
-.sumber .card:hover{
-    transform: translateY(5px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    background-color: #eaf3f9;;
-}
-
-.sumber h3 {
-    margin: 0 0 16px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #4399e8;
-    color: #17365d;
-    font-size: 18px;
-    line-height: 1.4;
-}
-
-.sumber ul {
-    margin: 0;
-    padding-left: 20px;
-    color: #496681;
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-.sumber li {
-    margin-bottom: 12px;
-}
-
-.sumber li:last-child {
-    margin-bottom: 0;
-}
-
-.sumber a {
-    color: #151515;
-}
-
-.sumber a:hover {
-    text-decoration: underline;
-    color: #267bc8;
-}
-
-/*  FORM KONVERSI */
-.converter-card {
-    padding: 32px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 0;
-    margin-bottom: 22px;
-}
-
-.form-group label {
-    color: #17365d;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    min-height: 50px;
-    padding: 12px 15px;
-    border: 1px solid #d6e3ef;
-    border-radius: 6px;
-    background-color: #ffffff;
-    color: #294d6c;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: 2px solid #b7dcfb;
-    border-color: #4399e8;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.error-message {
-    margin: 12px 0 0;
-    color: #b42318;
-    font-size: 14px;
-}
-
-/*  HASIL KONVERSI  */
-.result-card {
-    margin-top: 25px;
-    padding: 30px;
-    border-top: 5px solid #4399e8;
-}
-
-.result-message {
-    margin: 8px 0;
-    color: #607b94;
-}
-
-.result-value {
-    margin: 12px 0 22px;
-    color: #173f6d;
-    font-size: clamp(28px, 4vw, 38px);
-    font-weight: bold;
-    overflow-wrap: anywhere;
-}
-
-.result-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.delete-button {
-    background-color: #dc3545;
-}
-
-.delete-button:hover {
-    background-color: #b02a37;
-}
-
-[hidden] {
-    display: none !important;
-}
-
-/* HALAMAN TENTANG*/
-.about-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
-    padding: 34px;
-}
-
-.about-description p {
-    color: #607b94;
-    line-height: 1.8;
-}
-
-.about-side {
-    padding-left: 30px;
-    border-left: 1px solid #e0eaf3;
-}
-
-.unit-list {
-    margin: 0;
-    padding-left: 22px;
-    color: #496681;
-}
-
-.unit-list li {
-    margin-bottom: 12px;
-    line-height: 1.7;
-}
-
-.team-card {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    align-items: start;
-    gap: 25px;
-}
-
-.team-icon {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    border-radius: 50%;
-    background-color: #edf6fd;
-    font-size: 45px;
-}
-
-.team-list {
-    padding-left: 22px;
-    color: #496681;
-    line-height: 1.9;
-}
-
-.team-note {
-    color: #607b94;
-    font-size: 13px;
-}
-
-/*  FOOTER */
-.footer {
-    padding: 20px;
-    background-color: #ffffff;
-    border-top: 1px solid #dce8f3;
-    color: #607b94;
-    text-align: center;
-    font-size: 13px;
-}
-
-.footer p {
-    margin: 0;
-}
-
-/* RESPONSIVE*/
-@media (max-width: 760px) {
-    .navbar {
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        padding: 16px 5%;
-    }
-
-    .nav-links {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 18px;
-    }
-
-    .home-page {
-        width: 92%;
-        min-height: 390px;
-    }
-
-    .home-content {
-        width: 100%;
-        padding: 28px;
-    }
-
-    .home-content h1 {
-        font-size: 32px;
-    }
-
-    .container {
-        width: 92%;
-        margin-top: 26px;
-    }
-    
-    .sumber {
-        grid-template-columns: 1fr;
-    }
-
-    .section-heading h1 {
-        font-size: 28px;
-    }
-
-    .card,
-    .converter-card {
-        padding: 22px;
-    }
-
-    .form-row,
-    .about-card,
-    .team-card {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .about-side {
-        padding: 22px 0 0;
-        border-top: 1px solid #e0eaf3;
-        border-left: none;
-    }
-
-    .team-icon {
-        margin: 0;
-    }
-
-    th,
-    td {
-        padding: 10px;
-        font-size: 13px;
-    }
-}
+ * {
+     box-sizing: border-box;
+ }
+
+ html {
+     scroll-behavior: smooth;
+ }
+
+ body {
+     margin: 0;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 15px;
+     line-height: 1.6;
+     color: #17365d;
+     background-color: #eaf3f9;
+ }
+
+ a {
+     text-decoration: none;
+     color: inherit;
+ }
+
+ button,
+ input,
+ select {
+     font: inherit;
+ }
+
+ /* NAVBAR */
+ .navbar {
+     width: 100%;
+     min-height: 76px;
+     padding: 15px 5%;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: 24px;
+     background-color: #ffffff;
+     border-bottom: 1px solid #dce8f3;
+ }
+
+ .logo {
+     display: inline-flex;
+     align-items: center;
+     gap: 8px;
+     color: #17365d;
+     font-size: 21px;
+     font-weight: bold;
+     white-space: nowrap;
+ }
+
+ .nav-links {
+     display: flex;
+     align-items: center;
+     gap: 28px;
+ }
+
+ .nav-links a {
+     padding: 8px 0;
+     color: #496681;
+     font-size: 14px;
+     border-bottom: 2px solid transparent;
+     transition: 0.2s;
+ }
+
+ .nav-links a:hover,
+ .nav-links a.active {
+     color: #287ed1;
+     border-bottom-color: #287ed1;
+ }
+
+ /* HOME DAN GAMBAR */
+ .home-page {
+     width: 90%;
+     max-width: 1250px;
+     min-height: 430px;
+     position: relative;
+     display: flex;
+     align-items: center;
+     overflow: hidden;
+     margin: 28px auto 42px;
+     border-radius: 8px;
+     background-color: #17365d;
+ }
+
+ .home-image {
+     position: absolute;
+     inset: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: center;
+     z-index: 0;
+ }
+
+ .home-overlay {
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(90deg,
+             rgba(13, 43, 63, 0.88) 0%,
+             rgba(13, 43, 63, 0.58) 50%,
+             rgba(13, 43, 63, 0.08) 100%);
+     z-index: 1;
+ }
+
+ .home-content {
+     position: relative;
+     z-index: 2;
+     width: 60%;
+     padding: 48px;
+     color: #ffffff;
+ }
+
+ .home-content h1 {
+     margin: 0 0 18px;
+     font-size: clamp(32px, 4vw, 46px);
+     line-height: 1.2;
+ }
+
+ .home-content p {
+     max-width: 450px;
+     margin: 0 0 25px;
+     color: #edf5fb;
+     line-height: 1.8;
+ }
+
+ /* TOMBOL*/
+ .button {
+     display: inline-block;
+     padding: 12px 23px;
+     border: none;
+     border-radius: 5px;
+     background-color: #4399e8;
+     color: #ffffff;
+     font-size: 14px;
+     font-weight: bold;
+     text-align: center;
+     cursor: pointer;
+     transition: background-color 0.2s;
+ }
+
+ .button:hover {
+     background-color: #267bc8;
+ }
+
+ /* KONTEN DAN JUDUL*/
+ .container {
+     width: 90%;
+     max-width: 1100px;
+     margin: 35px auto 45px;
+ }
+
+ .section-heading {
+     margin-bottom: 22px;
+ }
+
+ .section-heading h1 {
+     margin: 0 0 8px;
+     color: #17365d;
+     font-size: 32px;
+     line-height: 1.3;
+ }
+
+ .section-heading p {
+     margin: 0;
+     color: #607b94;
+ }
+
+ /* KARTU */
+ .card {
+     margin-bottom: 24px;
+     padding: 30px;
+     background-color: #ffffff;
+     border: 1px solid #e1ebf4;
+     border-radius: 9px;
+     box-shadow: 0 4px 15px rgba(45, 78, 110, 0.06);
+ }
+
+ .card h2 {
+     margin: 0 0 16px;
+     font-size: 23px;
+     line-height: 1.4;
+ }
+
+ .card p {
+     margin-top: 0;
+ }
+
+ /*  TABEL RUMUS SUHU */
+ .formula-section {
+     margin-top: 0;
+ }
+
+ .table-wrapper {
+     width: 100%;
+     overflow-x: auto;
+ }
+
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     background-color: #ffffff;
+ }
+
+ th,
+ td {
+     padding: 13px 16px;
+     border: 1px solid #d6e3ef;
+     text-align: left;
+     vertical-align: middle;
+ }
+
+ th {
+     background-color: #173b57;
+     color: #ffffff;
+     font-weight: bold;
+ }
+
+ tbody tr:nth-child(even) {
+     background-color: #f1f7fb;
+ }
+
+ tbody tr:hover {
+     background-color: #e5f2fb;
+ }
+
+ /* FAKTA, REFERENSI, SUMBER DAYA */
+ .sumber {
+     display: grid;
+     grid-template-columns: repeat(3, minmax(0, 1fr));
+     gap: 24px;
+     align-items: stretch;
+     margin-top: 0;
+ }
+
+ .sumber .card {
+     margin-bottom: 0;
+     padding: 26px;
+     background-color: #ffffff;
+     border: 1px solid #e1ebf4;
+     border-radius: 9px;
+     box-shadow: 0 4px 15px rgba(45, 78, 110, 0.06);
+ }
+
+ .sumber .card:hover {
+     transform: translateY(5px);
+     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+     background-color: #eaf3f9;
+     ;
+ }
+
+ .sumber h3 {
+     margin: 0 0 16px;
+     padding-bottom: 10px;
+     border-bottom: 2px solid #4399e8;
+     color: #17365d;
+     font-size: 18px;
+     line-height: 1.4;
+ }
+
+ .sumber ul {
+     margin: 0;
+     padding-left: 20px;
+     color: #496681;
+     font-size: 14px;
+     line-height: 1.7;
+ }
+
+ .sumber li {
+     margin-bottom: 12px;
+ }
+
+ .sumber li:last-child {
+     margin-bottom: 0;
+ }
+
+ .sumber a {
+     color: #151515;
+ }
+
+ .sumber a:hover {
+     text-decoration: underline;
+     color: #267bc8;
+ }
+
+ /*  FORM KONVERSI */
+ .converter-card {
+     padding: 32px;
+ }
+
+ .form-group {
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
+     min-width: 0;
+     margin-bottom: 22px;
+ }
+
+ .form-group label {
+     color: #17365d;
+     font-size: 14px;
+     font-weight: bold;
+ }
+
+ .form-group input,
+ .form-group select {
+     width: 100%;
+     min-height: 50px;
+     padding: 12px 15px;
+     border: 1px solid #d6e3ef;
+     border-radius: 6px;
+     background-color: #ffffff;
+     color: #294d6c;
+ }
+
+ .form-group input:focus,
+ .form-group select:focus {
+     outline: 2px solid #b7dcfb;
+     border-color: #4399e8;
+ }
+
+ .form-row {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 24px;
+ }
+
+ .error-message {
+     margin: 12px 0 0;
+     color: #b42318;
+     font-size: 14px;
+ }
+
+ /*  HASIL KONVERSI  */
+ .result-card {
+     margin-top: 25px;
+     padding: 30px;
+     border-top: 5px solid #4399e8;
+ }
+
+ .result-message {
+     margin: 8px 0;
+     color: #607b94;
+ }
+
+ .result-value {
+     margin: 12px 0 22px;
+     color: #173f6d;
+     font-size: clamp(28px, 4vw, 38px);
+     font-weight: bold;
+     overflow-wrap: anywhere;
+ }
+
+ .result-actions {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 12px;
+ }
+
+ .delete-button {
+     background-color: #dc3545;
+ }
+
+ .delete-button:hover {
+     background-color: #b02a37;
+ }
+
+ [hidden] {
+     display: none !important;
+ }
+
+ /* HALAMAN TENTANG*/
+ .about-card {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 36px;
+     padding: 34px;
+ }
+
+ .about-description p {
+     color: #607b94;
+     line-height: 1.8;
+ }
+
+ .about-side {
+     padding-left: 30px;
+     border-left: 1px solid #e0eaf3;
+ }
+
+ .unit-list {
+     margin: 0;
+     padding-left: 22px;
+     color: #496681;
+ }
+
+ .unit-list li {
+     margin-bottom: 12px;
+     line-height: 1.7;
+ }
+
+ .team-card {
+     display: grid;
+     grid-template-columns: 120px 1fr;
+     align-items: start;
+     gap: 25px;
+ }
+
+ .team-icon {
+     width: 100px;
+     height: 100px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin: 0 auto;
+     border-radius: 50%;
+     background-color: #edf6fd;
+     font-size: 45px;
+ }
+
+ .team-list {
+     padding-left: 22px;
+     color: #496681;
+     line-height: 1.9;
+ }
+
+ .team-note {
+     color: #607b94;
+     font-size: 13px;
+ }
+
+ /*  FOOTER */
+ .footer {
+     padding: 20px;
+     background-color: #ffffff;
+     border-top: 1px solid #dce8f3;
+     color: #607b94;
+     text-align: center;
+     font-size: 13px;
+ }
+
+ .footer p {
+     margin: 0;
+ }
+
+ /* RESPONSIVE*/
+ @media (max-width: 760px) {
+     .navbar {
+         flex-direction: column;
+         justify-content: center;
+         gap: 10px;
+         padding: 16px 5%;
+     }
+
+     .nav-links {
+         justify-content: center;
+         flex-wrap: wrap;
+         gap: 18px;
+     }
+
+     .home-page {
+         width: 92%;
+         min-height: 390px;
+     }
+
+     .home-content {
+         width: 100%;
+         padding: 28px;
+     }
+
+     .home-content h1 {
+         font-size: 32px;
+     }
+
+     .container {
+         width: 92%;
+         margin-top: 26px;
+     }
+
+     .sumber {
+         grid-template-columns: 1fr;
+     }
+
+     .section-heading h1 {
+         font-size: 28px;
+     }
+
+     .card,
+     .converter-card {
+         padding: 22px;
+     }
+
+     .form-row,
+     .about-card,
+     .team-card {
+         grid-template-columns: 1fr;
+         gap: 16px;
+     }
+
+     .about-side {
+         padding: 22px 0 0;
+         border-top: 1px solid #e0eaf3;
+         border-left: none;
+     }
+
+     .team-icon {
+         margin: 0;
+     }
+
+     th,
+     td {
+         padding: 10px;
+         font-size: 13px;
+     }
+ }

@@ -8,405 +8,468 @@
 
     <link rel="icon" href="image/logo.jpg">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo">
-            <img src="image/logo.jpg" alt="Logo UMKM">
-        </div>
+        <!-- HEADER -->
+        <header>
+            <div class="logo">
+                <img src="image/logo.jpg" alt="Logo UMKM">
+            </div>
 
-        <nav>
-            <a href="index.html">HOME</a>
-            <a href="produk.html" class="active" aria-current="page">PRODUK</a>
+            <nav>
+                <a href="index.html">HOME</a>
+                <a href="produk.html" class="active" aria-current="page">PRODUK</a>
 
-            <div class="dropdown">
-                <span class="dropdown-toggle" tabindex="0">INFORMASI ▼</span>
+                <div class="dropdown">
+                    <span class="dropdown-toggle" tabindex="0">INFORMASI ▼</span>
 
-                <div class="dropdown-content">
-                    <a href="index.html#produk-unggulan">PRODUK UNGGULAN</a>
-                    <a href="index.html#lokasi">LOKASI</a>
-                    <a href="pemesanan.html">PEMESANAN</a>
+                    <div class="dropdown-content">
+                        <a href="index.html#produk-unggulan">PRODUK UNGGULAN</a>
+                        <a href="index.html#lokasi">LOKASI</a>
+                        <a href="pemesanan.html">PEMESANAN</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <!-- DAFTAR PRODUK (TABEL) -->
+        <section class="table-section">
+
+            <h2 class="table-title">Daftar Produk</h2>
+
+            <div class="table-wrap">
+                <table class="product-table">
+
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>PRODUK</th>
+                            <th>HARGA</th>
+                            <th>STOK</th>
+                            <th>PESAN</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <!-- PAKET PROMO -->
+                        <tr class="table-category">
+                            <td colspan="5">Paket Promo</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td><img src="image/geybok.jpg" alt="Paket Promo Happy 1" loading="lazy"><span
+                                    class="product-name">Paket Promo Happy 1</span></td>
+                            <td>Rp 29.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="image/geybok.jpg" alt="Paket Promo Happy 2" loading="lazy"><span
+                                    class="product-name">Paket Promo Happy 2</span></td>
+                            <td>Rp 29.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="image/blonde.jpg" alt="Paket Promo Happy 3" loading="lazy"><span
+                                    class="product-name">Paket Promo Happy 3</span></td>
+                            <td>Rp 29.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><img src="image/kriuk.jpg" alt="Paket Promo Semua Kenyang" loading="lazy"><span
+                                    class="product-name">Paket Promo Semua Kenyang</span></td>
+                            <td>Rp 109.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><img src="image/geybok.jpg" alt="Paket Promo Ber-2 Puas" loading="lazy"><span
+                                    class="product-name">Paket Promo Ber-2 Puas</span></td>
+                            <td>Rp 52.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><img src="image/blonde.jpg" alt="Paket Promo Ber-2 Nikmat" loading="lazy"><span
+                                    class="product-name">Paket Promo Ber-2 Nikmat</span></td>
+                            <td>Rp 52.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><img src="image/blonde.jpg" alt="Paket Promo Ceria 1" loading="lazy"><span
+                                    class="product-name">Paket Promo Ceria 1</span></td>
+                            <td>Rp 29.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><img src="image/kriuk.jpg" alt="Paket Promo Ceria 2" loading="lazy"><span
+                                    class="product-name">Paket Promo Ceria 2</span></td>
+                            <td>Rp 25.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <!-- PAKET NASI -->
+                        <tr class="table-category">
+                            <td colspan="5">Paket Nasi</td>
+                        </tr>
+
+                        <tr>
+                            <td>9</td>
+                            <td><img src="image/geybok.jpg" alt="Paket Ayam Geybok 1" loading="lazy"><span
+                                    class="product-name">Paket Ayam Geybok 1</span></td>
+                            <td>Rp 23.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><img src="image/blonde.jpg" alt="Paket Ayam Blonde" loading="lazy"><span
+                                    class="product-name">Paket Ayam Blonde</span></td>
+                            <td>Rp 23.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td><img src="image/kriuk.jpg" alt="Paket Ayam Kriuk" loading="lazy"><span
+                                    class="product-name">Paket Ayam Kriuk</span></td>
+                            <td>Rp 19.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td><img src="image/geybok.jpg" alt="Paket Ayam Geybok 2" loading="lazy"><span
+                                    class="product-name">Paket Ayam Geybok 2</span></td>
+                            <td>Rp 24.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td><img src="image/empalGeybok.jpg" alt="Paket Empal Geybok 3" loading="lazy"><span
+                                    class="product-name">Paket Empal Geybok 3</span></td>
+                            <td>Rp 23.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td><img src="image/empalGeybok.jpg" alt="Paket Empal Geybok 4" loading="lazy"><span
+                                    class="product-name">Paket Empal Geybok 4</span></td>
+                            <td>Rp 24.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td><img src="image/blonde.jpg" alt="Paket Ayam Blonkrik" loading="lazy"><span
+                                    class="product-name">Paket Ayam Blonkrik</span></td>
+                            <td>Rp 23.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <!-- AYAM SATUAN -->
+                        <tr class="table-category">
+                            <td colspan="5">Ayam Satuan</td>
+                        </tr>
+
+                        <tr>
+                            <td>16</td>
+                            <td><img src="image/geybok.jpg" alt="Ayam Geybok" loading="lazy"><span
+                                    class="product-name">Ayam Geybok</span></td>
+                            <td>Rp 18.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td><img src="image/empalGeybok.jpg" alt="Empal Geybok" loading="lazy"><span
+                                    class="product-name">Empal Geybok</span></td>
+                            <td>Rp 18.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td><img src="image/blonde.jpg" alt="Ayam Blonde" loading="lazy"><span
+                                    class="product-name">Ayam Blonde</span></td>
+                            <td>Rp 19.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td><img src="image/kriuk.jpg" alt="Ayam Kriuk" loading="lazy"><span
+                                    class="product-name">Ayam Kriuk</span></td>
+                            <td>Rp 15.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td><img src="image/blonde.jpg" alt="Ayam Blonkrik" loading="lazy"><span
+                                    class="product-name">Ayam Blonkrik</span></td>
+                            <td>Rp 19.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <!-- TAMBAHAN -->
+                        <tr class="table-category">
+                            <td colspan="5">Tambahan</td>
+                        </tr>
+
+                        <tr>
+                            <td>21</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYdSrejE0-8qYnqCm-JxQfAVuEmXO-v1PDupq-rgA9YQ&s=10"
+                                    alt="Nasi Putih" loading="lazy"><span class="product-name">Nasi Putih</span></td>
+                            <td>Rp 5.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPZFTt1mvK0FRQwrYMWxdOXvYJ3_EUUiPFWZYhz_Js1g&s=10"
+                                    alt="Nasi Uduk" loading="lazy"><span class="product-name">Nasi Uduk</span></td>
+                            <td>Rp 7.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOjAnKnJtWk8uxU1zhj6XjBdAdnjdtG08l0O_XSx9Z2g&s=10"
+                                    alt="Sayur Asem" loading="lazy"><span class="product-name">Sayur Asem</span></td>
+                            <td>Rp 5.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>24</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStnPfY6Hx42Wr6OztUY2BgybTv4MhxdDuKuc2bRuAmeg&s=10"
+                                    alt="Tempe" loading="lazy"><span class="product-name">Tempe</span></td>
+                            <td>Rp 2.500</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRClsr80o9KUmV6z268DtvnVwIJi3P63aeP18f1H1A-ow&s=10"
+                                    alt="Tahu" loading="lazy"><span class="product-name">Tahu</span></td>
+                            <td>Rp 2.500</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_yov3A8-T2pB2BKhAFWYE_D1s7pRxZqexSlaI3-LUQ&s=10"
+                                    alt="Telur Dadar" loading="lazy"><span class="product-name">Telur Dadar</span></td>
+                            <td>Rp 5.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>27</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYYTYa-W69lSc4zjA3iw69JXaDXSk6drzCWRunn4flSA&s=10"
+                                    alt="Sate Kulit" loading="lazy"><span class="product-name">Sate Kulit</span></td>
+                            <td>Rp 4.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEtFwxovtILsuz1cZIF1DFMZGl9dr4Hs6-XV_ogacDeA&s=10"
+                                    alt="Sate Ati Ampela" loading="lazy"><span class="product-name">Sate Ati
+                                    Ampela</span></td>
+                            <td>Rp 5.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>29</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb49yKpqdEGn6GNA2Y-S4o1O0iAnfSe6PKXu61E09lRA&s=10"
+                                    alt="Kerupuk" loading="lazy"><span class="product-name">Kerupuk</span></td>
+                            <td>Rp 3.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>30</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwiXkAaM4OoY6ucCtOrvClEzNo40fiec0gaP0k94m_Yw&s=10"
+                                    alt="Sate Usus" loading="lazy"><span class="product-name">Sate Usus</span></td>
+                            <td>Rp 4.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>31</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSnINm7JpKP7f1qtlkrfDGA3KJ8hPf6MlBaE6Qgdxnjw&s=10"
+                                    alt="Ikan Piyik Geybok" loading="lazy"><span class="product-name">Ikan Piyik
+                                    Geybok</span></td>
+                            <td>Rp 10.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGi6MGJrJIU8dZYxGOyGs-NCMWErihldmDSDfrzKcDY_0YTL33Z7qWYUQ&s=10"
+                                    alt="Jengkol Goreng" loading="lazy"><span class="product-name">Jengkol Goreng</span>
+                            </td>
+                            <td>Rp 6.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>33</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5YavP6NCU1mNmQQ-dxQyyTELkyXPrwDehnsvwLTe-Kg&s=10"
+                                    alt="Jengkol Semur" loading="lazy"><span class="product-name">Jengkol Semur</span>
+                            </td>
+                            <td>Rp 6.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>34</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB9l6LzPh52VAfiwrC4eOH_mti__YBkJbfbn-HdPvGmg&s=10"
+                                    alt="Pete" loading="lazy"><span class="product-name">Pete</span></td>
+                            <td>Rp 8.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>35</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwrAf_0Xb9twKFJscraPSl5t6_CmQw_D5_duEi797v3w&s=10"
+                                    alt="Terong Goreng" loading="lazy"><span class="product-name">Terong Goreng</span>
+                            </td>
+                            <td>Rp 5.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>36</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm5d4jFB4jxYHO6HMmNETaM-PHMgFWGAnwfeM24nZ1oA&s=10"
+                                    alt="Kol Goreng" loading="lazy"><span class="product-name">Kol Goreng</span></td>
+                            <td>Rp 5.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>37</td>
+                            <td><img src="https://rumahsehatherbaholistic.com/wp-content/uploads/2025/11/manfaat-dan-nutrisi-keju-mozarella.jpg"
+                                    alt="Keju" loading="lazy"><span class="product-name">Keju</span></td>
+                            <td>Rp 5.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <!-- MINUMAN -->
+                        <tr class="table-category">
+                            <td colspan="5">Minuman</td>
+                        </tr>
+
+                        <tr>
+                            <td>38</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFmI5RJ08JrAvsPwkHPXgBRr-uDL9UjsZFbUXlnlwY_w&s=10"
+                                    alt="Es Tekit (Teh Jeruk Sonkit)" loading="lazy"><span class="product-name">Es Tekit
+                                    (Teh Jeruk Sonkit)</span></td>
+                            <td>Rp 8.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>39</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC909gLFFmX-51p_BopZrjbDwEjZyYv-yvBRVzHQ-aUw&s=10"
+                                    alt="Es Teh Tawar" loading="lazy"><span class="product-name">Es Teh Tawar</span>
+                            </td>
+                            <td>Rp 3.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>40</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0ZZzgPkVYh69_bnhMOaOYJzG3-EY-Yddjc2xIc7W7-w&s=10"
+                                    alt="Teh Pucuk" loading="lazy"><span class="product-name">Teh Pucuk</span></td>
+                            <td>Rp 5.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>41</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6QJlXyv3cdDwS4r51NXCajObkDxVz_gcZ4U-YEXmSEw&s=10"
+                                    alt="Air Mineral Botol" loading="lazy"><span class="product-name">Air Mineral
+                                    Botol</span></td>
+                            <td>Rp 5.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>42</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfMY79l7wHJYga7CAZHnIHif6TheZWT4bH7SveG1N7SQ&s=10"
+                                    alt="Cincau Madu" loading="lazy"><span class="product-name">Cincau Madu</span></td>
+                            <td>Rp 2.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>43</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgpqlB_jWDBPHlLgB0GZ0ObQQPS6NfIte-NguRQ715bQ&s=10"
+                                    alt="Teh Tawar" loading="lazy"><span class="product-name">Teh Tawar</span></td>
+                            <td>Rp 2.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+                        <tr>
+                            <td>44</td>
+                            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCCVfVlLcWU97F_REim5a5bNZ3K7ej2XlpxyyEUJ3pyA&s=10"
+                                    alt="Teh Botol / S-Tee" loading="lazy"><span class="product-name">Teh Botol /
+                                    S-Tee</span></td>
+                            <td>Rp 5.000</td>
+                            <td><span class="stock">Tersedia</span></td>
+                            <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-content">
+                <h3>AYAM GEYBOK BANG JARWO</h3>
+                <p>Kuliner ayam dengan cita rasa khas dan harga terjangkau.</p>
+
+                <div class="social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-        </nav>
-    </header>
+        </footer>
 
-
-    <!-- DAFTAR PRODUK (TABEL) -->
-    <section class="table-section">
-
-        <h2 class="table-title">Daftar Produk</h2>
-
-        <div class="table-wrap">
-            <table class="product-table">
-
-                <thead>
-                    <tr>
-                        <th>NO</th>
-                        <th>PRODUK</th>
-                        <th>HARGA</th>
-                        <th>STOK</th>
-                        <th>PESAN</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <!-- PAKET PROMO -->
-                    <tr class="table-category"><td colspan="5">Paket Promo</td></tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td><img src="image/geybok.jpg" alt="Paket Promo Happy 1" loading="lazy"><span class="product-name">Paket Promo Happy 1</span></td>
-                        <td>Rp 29.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><img src="image/geybok.jpg" alt="Paket Promo Happy 2" loading="lazy"><span class="product-name">Paket Promo Happy 2</span></td>
-                        <td>Rp 29.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="image/blonde.jpg" alt="Paket Promo Happy 3" loading="lazy"><span class="product-name">Paket Promo Happy 3</span></td>
-                        <td>Rp 29.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><img src="image/kriuk.jpg" alt="Paket Promo Semua Kenyang" loading="lazy"><span class="product-name">Paket Promo Semua Kenyang</span></td>
-                        <td>Rp 109.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><img src="image/geybok.jpg" alt="Paket Promo Ber-2 Puas" loading="lazy"><span class="product-name">Paket Promo Ber-2 Puas</span></td>
-                        <td>Rp 52.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td><img src="image/blonde.jpg" alt="Paket Promo Ber-2 Nikmat" loading="lazy"><span class="product-name">Paket Promo Ber-2 Nikmat</span></td>
-                        <td>Rp 52.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td><img src="image/blonde.jpg" alt="Paket Promo Ceria 1" loading="lazy"><span class="product-name">Paket Promo Ceria 1</span></td>
-                        <td>Rp 29.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td><img src="image/kriuk.jpg" alt="Paket Promo Ceria 2" loading="lazy"><span class="product-name">Paket Promo Ceria 2</span></td>
-                        <td>Rp 25.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <!-- PAKET NASI -->
-                    <tr class="table-category"><td colspan="5">Paket Nasi</td></tr>
-
-                    <tr>
-                        <td>9</td>
-                        <td><img src="image/geybok.jpg" alt="Paket Ayam Geybok 1" loading="lazy"><span class="product-name">Paket Ayam Geybok 1</span></td>
-                        <td>Rp 23.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td><img src="image/blonde.jpg" alt="Paket Ayam Blonde" loading="lazy"><span class="product-name">Paket Ayam Blonde</span></td>
-                        <td>Rp 23.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td><img src="image/kriuk.jpg" alt="Paket Ayam Kriuk" loading="lazy"><span class="product-name">Paket Ayam Kriuk</span></td>
-                        <td>Rp 19.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td><img src="image/geybok.jpg" alt="Paket Ayam Geybok 2" loading="lazy"><span class="product-name">Paket Ayam Geybok 2</span></td>
-                        <td>Rp 24.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td><img src="image/empalGeybok.jpg" alt="Paket Empal Geybok 3" loading="lazy"><span class="product-name">Paket Empal Geybok 3</span></td>
-                        <td>Rp 23.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td><img src="image/empalGeybok.jpg" alt="Paket Empal Geybok 4" loading="lazy"><span class="product-name">Paket Empal Geybok 4</span></td>
-                        <td>Rp 24.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td><img src="image/blonde.jpg" alt="Paket Ayam Blonkrik" loading="lazy"><span class="product-name">Paket Ayam Blonkrik</span></td>
-                        <td>Rp 23.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <!-- AYAM SATUAN -->
-                    <tr class="table-category"><td colspan="5">Ayam Satuan</td></tr>
-
-                    <tr>
-                        <td>16</td>
-                        <td><img src="image/geybok.jpg" alt="Ayam Geybok" loading="lazy"><span class="product-name">Ayam Geybok</span></td>
-                        <td>Rp 18.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>17</td>
-                        <td><img src="image/empalGeybok.jpg" alt="Empal Geybok" loading="lazy"><span class="product-name">Empal Geybok</span></td>
-                        <td>Rp 18.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>18</td>
-                        <td><img src="image/blonde.jpg" alt="Ayam Blonde" loading="lazy"><span class="product-name">Ayam Blonde</span></td>
-                        <td>Rp 19.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>19</td>
-                        <td><img src="image/kriuk.jpg" alt="Ayam Kriuk" loading="lazy"><span class="product-name">Ayam Kriuk</span></td>
-                        <td>Rp 15.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>20</td>
-                        <td><img src="image/blonde.jpg" alt="Ayam Blonkrik" loading="lazy"><span class="product-name">Ayam Blonkrik</span></td>
-                        <td>Rp 19.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <!-- TAMBAHAN -->
-                    <tr class="table-category"><td colspan="5">Tambahan</td></tr>
-
-                    <tr>
-                        <td>21</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYdSrejE0-8qYnqCm-JxQfAVuEmXO-v1PDupq-rgA9YQ&s=10" alt="Nasi Putih" loading="lazy"><span class="product-name">Nasi Putih</span></td>
-                        <td>Rp 5.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>22</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPZFTt1mvK0FRQwrYMWxdOXvYJ3_EUUiPFWZYhz_Js1g&s=10" alt="Nasi Uduk" loading="lazy"><span class="product-name">Nasi Uduk</span></td>
-                        <td>Rp 7.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>23</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOjAnKnJtWk8uxU1zhj6XjBdAdnjdtG08l0O_XSx9Z2g&s=10" alt="Sayur Asem" loading="lazy"><span class="product-name">Sayur Asem</span></td>
-                        <td>Rp 5.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>24</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStnPfY6Hx42Wr6OztUY2BgybTv4MhxdDuKuc2bRuAmeg&s=10" alt="Tempe" loading="lazy"><span class="product-name">Tempe</span></td>
-                        <td>Rp 2.500</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>25</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRClsr80o9KUmV6z268DtvnVwIJi3P63aeP18f1H1A-ow&s=10" alt="Tahu" loading="lazy"><span class="product-name">Tahu</span></td>
-                        <td>Rp 2.500</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>26</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_yov3A8-T2pB2BKhAFWYE_D1s7pRxZqexSlaI3-LUQ&s=10" alt="Telur Dadar" loading="lazy"><span class="product-name">Telur Dadar</span></td>
-                        <td>Rp 5.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>27</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYYTYa-W69lSc4zjA3iw69JXaDXSk6drzCWRunn4flSA&s=10" alt="Sate Kulit" loading="lazy"><span class="product-name">Sate Kulit</span></td>
-                        <td>Rp 4.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>28</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEtFwxovtILsuz1cZIF1DFMZGl9dr4Hs6-XV_ogacDeA&s=10" alt="Sate Ati Ampela" loading="lazy"><span class="product-name">Sate Ati Ampela</span></td>
-                        <td>Rp 5.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>29</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb49yKpqdEGn6GNA2Y-S4o1O0iAnfSe6PKXu61E09lRA&s=10" alt="Kerupuk" loading="lazy"><span class="product-name">Kerupuk</span></td>
-                        <td>Rp 3.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>30</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwiXkAaM4OoY6ucCtOrvClEzNo40fiec0gaP0k94m_Yw&s=10" alt="Sate Usus" loading="lazy"><span class="product-name">Sate Usus</span></td>
-                        <td>Rp 4.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>31</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSnINm7JpKP7f1qtlkrfDGA3KJ8hPf6MlBaE6Qgdxnjw&s=10" alt="Ikan Piyik Geybok" loading="lazy"><span class="product-name">Ikan Piyik Geybok</span></td>
-                        <td>Rp 10.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>32</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGi6MGJrJIU8dZYxGOyGs-NCMWErihldmDSDfrzKcDY_0YTL33Z7qWYUQ&s=10" alt="Jengkol Goreng" loading="lazy"><span class="product-name">Jengkol Goreng</span></td>
-                        <td>Rp 6.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5YavP6NCU1mNmQQ-dxQyyTELkyXPrwDehnsvwLTe-Kg&s=10" alt="Jengkol Semur" loading="lazy"><span class="product-name">Jengkol Semur</span></td>
-                        <td>Rp 6.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>34</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB9l6LzPh52VAfiwrC4eOH_mti__YBkJbfbn-HdPvGmg&s=10" alt="Pete" loading="lazy"><span class="product-name">Pete</span></td>
-                        <td>Rp 8.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>35</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwrAf_0Xb9twKFJscraPSl5t6_CmQw_D5_duEi797v3w&s=10" alt="Terong Goreng" loading="lazy"><span class="product-name">Terong Goreng</span></td>
-                        <td>Rp 5.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>36</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm5d4jFB4jxYHO6HMmNETaM-PHMgFWGAnwfeM24nZ1oA&s=10" alt="Kol Goreng" loading="lazy"><span class="product-name">Kol Goreng</span></td>
-                        <td>Rp 5.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>37</td>
-                        <td><img src="https://rumahsehatherbaholistic.com/wp-content/uploads/2025/11/manfaat-dan-nutrisi-keju-mozarella.jpg" alt="Keju" loading="lazy"><span class="product-name">Keju</span></td>
-                        <td>Rp 5.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <!-- MINUMAN -->
-                    <tr class="table-category"><td colspan="5">Minuman</td></tr>
-
-                    <tr>
-                        <td>38</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFmI5RJ08JrAvsPwkHPXgBRr-uDL9UjsZFbUXlnlwY_w&s=10" alt="Es Tekit (Teh Jeruk Sonkit)" loading="lazy"><span class="product-name">Es Tekit (Teh Jeruk Sonkit)</span></td>
-                        <td>Rp 8.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>39</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC909gLFFmX-51p_BopZrjbDwEjZyYv-yvBRVzHQ-aUw&s=10" alt="Es Teh Tawar" loading="lazy"><span class="product-name">Es Teh Tawar</span></td>
-                        <td>Rp 3.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>40</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0ZZzgPkVYh69_bnhMOaOYJzG3-EY-Yddjc2xIc7W7-w&s=10" alt="Teh Pucuk" loading="lazy"><span class="product-name">Teh Pucuk</span></td>
-                        <td>Rp 5.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>41</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6QJlXyv3cdDwS4r51NXCajObkDxVz_gcZ4U-YEXmSEw&s=10" alt="Air Mineral Botol" loading="lazy"><span class="product-name">Air Mineral Botol</span></td>
-                        <td>Rp 5.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>42</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfMY79l7wHJYga7CAZHnIHif6TheZWT4bH7SveG1N7SQ&s=10" alt="Cincau Madu" loading="lazy"><span class="product-name">Cincau Madu</span></td>
-                        <td>Rp 2.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>43</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgpqlB_jWDBPHlLgB0GZ0ObQQPS6NfIte-NguRQ715bQ&s=10" alt="Teh Tawar" loading="lazy"><span class="product-name">Teh Tawar</span></td>
-                        <td>Rp 2.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-                    <tr>
-                        <td>44</td>
-                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCCVfVlLcWU97F_REim5a5bNZ3K7ej2XlpxyyEUJ3pyA&s=10" alt="Teh Botol / S-Tee" loading="lazy"><span class="product-name">Teh Botol / S-Tee</span></td>
-                        <td>Rp 5.000</td>
-                        <td><span class="stock">Tersedia</span></td>
-                        <td><a href="pemesanan.html" class="button button-small">PESAN</a></td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-content">
-            <h3>AYAM GEYBOK BANG JARWO</h3>
-            <p>Kuliner ayam dengan cita rasa khas dan harga terjangkau.</p>
-
-            <div class="social">
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
-
-</div>
+    </div>
 
 
 </body>
+
 </html>
