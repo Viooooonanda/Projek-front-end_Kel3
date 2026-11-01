@@ -84,155 +84,233 @@ section[id] {
 }
 
 /* =========================
-   HEADER
+   HEADER versi react bootstrap
 ========================= */
-header {
+/* Container bawaan Bootstrap jangan ikut aturan .container global di atas */
+.bj-page .container,
+.bj-page .container-fluid {
+    width: 100%;
+    min-height: 0;
+    display: block;
+    margin: 0 auto;
+}
+ 
+.bj-page .container {
+    max-width: 1140px;
+}
+
+/* HEADER / NAVBAR */
+.bj-page .navbar-bj {
+    /* variabel warna bawaan Bootstrap */
+    --bs-navbar-color: var(--black);
+    --bs-navbar-hover-color: var(--red);
+    --bs-navbar-active-color: var(--black);
+    --bs-navbar-nav-link-padding-x: 5px;
+ 
     width: 100%;
     min-height: 80px;
     padding: 10px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-
-    /* gradasi background */
     background: linear-gradient(135deg, var(--header-light), var(--header-soft));
-    /* garis di bawah header */
     border-bottom: 1px solid var(--black);
 }
-
-/* LOGO */
-
-.logo {
-    display: flex;
-    align-items: center;
+ 
+.bj-page .navbar-bj .navbar-brand {
+    margin: 0;
+    padding: 0;
 }
-
-.logo img {
+ 
+/* LOGO */
+.bj-page .bj-logo {
     width: 65px;
     height: 65px;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid var(--black);
 }
-
-/* NAVIGATION */
-
-nav {
-    display: flex;
-    align-items: center;
+ 
+/* MENU */
+.bj-page .navbar-bj .navbar-nav {
     gap: 25px;
-    /*mengatur jarak */
 }
-
-nav a,
-.dropdown-toggle {
-    position: relative;
-    color: var(--black);
-    text-decoration: none;
+ 
+.bj-page .navbar-bj .nav-link {
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-size: 14px;
     font-weight: bold;
-    padding: 10px 5px;
 }
-
-/*efek warna saat kursor diarahkan */
-nav a:hover,
-.dropdown-toggle:hover {
-    color: var(--red);
-    text-decoration: none;
-}
-
-/* menu halaman yang sedang dibuka */
-nav>a.active {
-    border-bottom: 2px solid var(--black);
-    border-bottom: none;
-}
-
-
-/* =========================
-   DROPDOWN
-========================= */
-.dropdown {
-    position: relative;
-}
-
-.dropdown-toggle {
-    display: inline-block;
-    cursor: pointer;
-}
-
-/*tampilan dropdown*/
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
+ 
+/* DROPDOWN */
+.bj-page .navbar-bj .dropdown-menu {
     min-width: 190px;
+    padding: 0;
     background: var(--white);
     border: 1px solid var(--black);
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    z-index: 100;
+    overflow: hidden;
 }
-
-.dropdown-content a {
-    display: block;
+ 
+.bj-page .navbar-bj .dropdown-item {
     padding: 12px 15px;
     font-size: 13px;
     color: var(--black);
     white-space: nowrap;
 }
-
-.dropdown-content a:hover {
+ 
+.bj-page .navbar-bj .dropdown-item:hover,
+.bj-page .navbar-bj .dropdown-item:focus {
     background: var(--yellow-light);
     color: var(--brown);
 }
-
-/* dropdown terbuka lewat hover (PC) atau tap/fokus (HP) - tanpa JS */
-.dropdown:hover .dropdown-content,
-.dropdown:focus-within .dropdown-content {
-    display: block;
+ 
+.bj-page .navbar-bj .dropdown-divider {
+    margin: 0;
+    border-color: var(--black);
+    opacity: 0.2;
 }
 
 /* =========================
    HERO - HALAMAN 1
 ========================= */
-.hero {
+.bj-page .bj-hero {
     width: 100%;
     min-height: 520px;
     padding: 60px 7%;
     display: flex;
-    /*text dan gambar berdampingan*/
     align-items: center;
-    justify-content: space-between;
-    /*mengatur posisi text dan gambar*/
-    gap: 50px;
     background: linear-gradient(135deg, var(--yellow-light), var(--yellow-soft));
 }
-
-/* HERO TEXT */
-
-.hero-text {
-    flex: 1;
+ 
+.bj-page .bj-hero .container-fluid {
+    padding: 0;
+}
+ 
+.bj-page .bj-hero-text {
     max-width: 600px;
 }
-
-/* H1 atau judul */
-.hero-text h1 {
+ 
+.bj-page .bj-hero-text h1 {
     margin-bottom: 20px;
     font-size: 42px;
     line-height: 1.15;
     color: var(--black);
 }
-
-.hero-text p {
+ 
+.bj-page .bj-hero-text p {
     margin-bottom: 25px;
     font-size: 16px;
     line-height: 1.8;
     text-align: justify;
 }
+ 
+.bj-page .bj-hero-image {
+    width: 100%;
+    max-width: 520px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--black);
+}
+ 
+/*  TOMBOL (React-Bootstrap Button)  */
+.bj-page .bj-btn {
+    --bs-btn-color: var(--white);
+    --bs-btn-bg: var(--black);
+    --bs-btn-border-color: var(--black);
+    --bs-btn-hover-color: var(--white);
+    --bs-btn-hover-bg: var(--brown);
+    --bs-btn-hover-border-color: var(--brown);
+    --bs-btn-active-color: var(--white);
+    --bs-btn-active-bg: var(--brown);
+    --bs-btn-active-border-color: var(--brown);
+ 
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+ 
+.bj-page .bj-btn-small {
+    padding: 9px 18px;
+    font-size: 12px;
+}
 
-/* BUTTON HERO */
+/* =========================
+   PRODUK UNGGULAN
+========================= */
+.bj-page .bj-products {
+    padding: 60px 7%;
+    background: var(--pure-white-gold);
+    text-align: center;
+}
+ 
+.bj-page .bj-products h2 {
+    margin-bottom: 35px;
+    font-size: 30px;
+    text-align: center;
+}
+ 
+.bj-page .bj-product-row {
+    --bs-gutter-x: 25px;
+    --bs-gutter-y: 25px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+ 
+.bj-page .bj-product-card {
+    padding: 15px;
+    background: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 8px;
+    transition: 0.2s;
+}
+ 
+.bj-page .bj-product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+ 
+.bj-page .bj-product-card .card-img-top {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+ 
+.bj-page .bj-product-card .card-body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+ 
+/* nama produk */
+.bj-page .bj-product-card .card-title {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+ 
+/* harga produk */
+.bj-page .bj-product-card .card-text {
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--brown);
+}
+ 
+/* tombol pesan selalu di dasar kartu */
+.bj-page .bj-product-card .bj-btn {
+    margin-top: auto;
+    align-self: center;
+}
+ 
+/* =========================
+   TOMBOL (dipakai di halaman lain)
+========================= */
 .button {
     display: inline-block;
     padding: 12px 25px;
@@ -245,102 +323,15 @@ nav>a.active {
     text-align: center;
     transition: 0.2s;
 }
-
+ 
 .button:hover {
     background: var(--brown);
 }
-
+ 
 /* tombol kecil (dipakai di kartu produk & tabel) */
 .button-small {
     padding: 9px 18px;
     font-size: 12px;
-}
-
-/* HERO IMAGE */
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.hero-image img {
-    width: 100%;
-    max-width: 520px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid var(--black);
-}
-
-/* =========================
-   PRODUK UNGGULAN
-========================= */
-
-.products {
-    padding: 60px 7%;
-    background: var(--pure-white-gold);
-    text-align: center;
-}
-
-.products h2 {
-    margin-bottom: 35px;
-    font-size: 30px;
-    text-align: center;
-}
-
-/* produk card untuk gambar */
-.product-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-/*efek saat cursor diarahkan ke card */
-.product-card {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    background: var(--white);
-    border: 1px solid var(--black);
-    border-radius: 8px;
-    transition: 0.2s;
-}
-
-.product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-}
-
-.product-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-/*nama produk */
-.product-card p {
-    margin-bottom: 8px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* harga produk */
-.product-card span {
-    display: block;
-    margin-bottom: 15px;
-    font-size: 15px;
-    font-weight: bold;
-    color: var(--brown);
-}
-
-/* tombol pesan selalu di dasar kartu */
-.product-card .button {
-    margin-top: auto;
-    align-self: center;
 }
 
 /* =========================

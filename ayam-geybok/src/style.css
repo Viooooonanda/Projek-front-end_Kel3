@@ -1,0 +1,335 @@
+:root {
+    /*mengatur warna sesuai color palette*/
+    --yellow: #f3e11d;
+    --yellow-light: #fff7c7;
+    --yellow-soft: #ffe98a;
+
+    --header-light: #eaea6d;
+    --header-soft: #f0e188;
+
+    --footer-light: #fcfcb3;
+    --footer-soft: #e2e45f;
+
+    --black: #000000;
+    --brown: #6b4f00;
+    --red: chocolate;
+
+    --white: #ffffff;
+    --pure-white-gold: #fffdf0;
+
+    --grey-field: #ececec;
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: var(--yellow-light);
+    color: var(--black);
+}
+
+img {
+    max-width: 100%;
+}
+
+/* fokus keyboard yang jelas (aksesibilitas) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--brown);
+    outline-offset: 2px;
+}
+
+/* =========================
+   CONTAINER
+   (flex column supaya footer selalu di bawah,
+   walaupun isi halaman sedikit)
+========================= */
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* supaya saat klik menu #anchor, judul tidak mepet atas */
+section[id] {
+    scroll-margin-top: 10px;
+}
+
+/* =========================
+   HEADER versi react bootstrap
+========================= */
+/* Container bawaan Bootstrap jangan ikut aturan .container global di atas */
+.bj-page .container,
+.bj-page .container-fluid {
+    width: 100%;
+    min-height: 0;
+    margin: 0 auto;
+}
+ 
+.bj-page .container {
+    display: block;
+    max-width: 1140px;
+}
+
+/* HEADER / NAVBAR */
+.bj-page .navbar-bj {
+    /* variabel warna bawaan Bootstrap */
+    --bs-navbar-color: var(--black);
+    --bs-navbar-hover-color: var(--red);
+    --bs-navbar-active-color: var(--black);
+    --bs-navbar-nav-link-padding-x: 5px;
+ 
+    width: 100%;
+    min-height: 80px;
+    padding: 10px 7%;
+    background: linear-gradient(135deg, var(--header-light), var(--header-soft));
+    border-bottom: 1px solid var(--black);
+}
+ 
+.bj-page .navbar-bj .navbar-brand {
+    margin: 0;
+    padding: 0;
+}
+ 
+/* LOGO */
+.bj-page .bj-logo {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--black);
+}
+ 
+/* MENU */
+.bj-page .navbar-bj .navbar-nav {
+    gap: 25px;
+}
+ 
+.bj-page .navbar-bj .nav-link {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+ 
+/* DROPDOWN */
+.bj-page .navbar-bj .dropdown-menu {
+    min-width: 190px;
+    padding: 0;
+    background: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+ 
+.bj-page .navbar-bj .dropdown-item {
+    padding: 12px 15px;
+    font-size: 13px;
+    color: var(--black);
+    white-space: nowrap;
+}
+ 
+.bj-page .navbar-bj .dropdown-item:hover,
+.bj-page .navbar-bj .dropdown-item:focus {
+    background: var(--yellow-light);
+    color: var(--brown);
+}
+ 
+.bj-page .navbar-bj .dropdown-divider {
+    margin: 0;
+    border-color: var(--black);
+    opacity: 0.2;
+}
+
+/* =========================
+   HERO - HALAMAN 1
+========================= */
+.bj-page .bj-hero {
+    width: 100%;
+    min-height: 520px;
+    padding: 60px 7%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--yellow-light), var(--yellow-soft));
+}
+ 
+.bj-page .bj-hero .container-fluid {
+    padding: 0;
+}
+ 
+.bj-page .bj-hero-text {
+    max-width: 600px;
+}
+ 
+.bj-page .bj-hero-text h1 {
+    margin-bottom: 20px;
+    font-size: 42px;
+    line-height: 1.15;
+    color: var(--black);
+}
+ 
+.bj-page .bj-hero-text p {
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+}
+ 
+.bj-page .bj-hero-image {
+    width: 100%;
+    max-width: 520px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--black);
+}
+ 
+/*  TOMBOL (React-Bootstrap Button)  */
+.bj-page .bj-btn {
+    --bs-btn-color: var(--white);
+    --bs-btn-bg: var(--black);
+    --bs-btn-border-color: var(--black);
+    --bs-btn-hover-color: var(--white);
+    --bs-btn-hover-bg: var(--brown);
+    --bs-btn-hover-border-color: var(--brown);
+    --bs-btn-active-color: var(--white);
+    --bs-btn-active-bg: var(--brown);
+    --bs-btn-active-border-color: var(--brown);
+ 
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+ 
+.bj-page .bj-btn-small {
+    padding: 9px 18px;
+    font-size: 12px;
+}
+
+/* =========================
+   PRODUK UNGGULAN
+========================= */
+.bj-page .bj-products {
+    padding: 60px 7%;
+    background: var(--pure-white-gold);
+    text-align: center;
+}
+ 
+.bj-page .bj-products h2 {
+    margin-bottom: 35px;
+    font-size: 30px;
+    text-align: center;
+}
+ 
+.bj-page .bj-product-row {
+    --bs-gutter-x: 25px;
+    --bs-gutter-y: 25px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+ 
+.bj-page .bj-product-card {
+    padding: 15px;
+    background: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 8px;
+    transition: 0.2s;
+}
+ 
+.bj-page .bj-product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+ 
+.bj-page .bj-product-card .card-img-top {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+ 
+.bj-page .bj-product-card .card-body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+ 
+/* nama produk */
+.bj-page .bj-product-card .card-title {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+ 
+/* harga produk */
+.bj-page .bj-product-card .card-text {
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--brown);
+}
+ 
+/* tombol pesan selalu di dasar kartu */
+.bj-page .bj-product-card .bj-btn {
+    margin-top: auto;
+    align-self: center;
+}
+ 
+/* =========================
+   TOMBOL (dipakai di halaman lain)
+========================= */
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--black);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.2s;
+}
+ 
+.button:hover {
+    background: var(--brown);
+}
+ 
+/* tombol kecil (dipakai di kartu produk & tabel) */
+.button-small {
+    padding: 9px 18px;
+    font-size: 12px;
+}
