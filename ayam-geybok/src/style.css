@@ -333,3 +333,102 @@ section[id] {
     padding: 9px 18px;
     font-size: 12px;
 }
+
+/* =========================
+   LOKASI
+========================= */
+.location {
+    padding: 60px 7%;
+    background: linear-gradient(
+        135deg,
+        var(--yellow-light),
+        var(--yellow-soft)
+    );
+}
+
+.location-text {
+    flex: 1;
+}
+
+.location-text h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.location-text p {
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.location-image {
+    display: flex;
+    justify-content: center;
+}
+
+.location-image iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--black);
+    border-radius: 8px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.bj-footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 35px 7%;
+    background: linear-gradient(
+        135deg,
+        var(--footer-light),
+        var(--footer-soft)
+    );
+    border-top: 1px solid var(--black);
+    text-align: center;
+}
+
+.footer-content {
+    width: 100%;
+    text-align: center;
+}
+
+.footer-content h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.footer-content p {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.social a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    color: var(--black);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.social a:hover {
+    color: var(--brown);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .location {
+        padding: 40px 7%;
+    }
+}
