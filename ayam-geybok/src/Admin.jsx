@@ -9,7 +9,7 @@ import Badge from 'react-bootstrap/Badge';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import './style.css';
-import { MENU_AWAL, bacaMenu, simpanMenu as simpanMenuStorage, rupiah } from './menuData.js';
+import { MENU_AWAL, bacaMenu, simpanMenu as simpanMenuStorage, rupiah } from './MenuData.js';
 
 const KATEGORI = ['Makanan', 'Minuman', 'Snack'];
 const AWAL = MENU_AWAL;

@@ -123,9 +123,9 @@ function Produk() {
               <Nav.Link href="/">HOME</Nav.Link>
               <Nav.Link href="/produk" active>PRODUK</Nav.Link>
               <NavDropdown title="INFORMASI" align="end">
-                <NavDropdown.Item href="/#produk-unggulan">PRODUK UNGGULAN</NavDropdown.Item>
-                <NavDropdown.Item href="/#lokasi">LOKASI</NavDropdown.Item>
-                <NavDropdown.Item href="/pemesanan">PEMESANAN</NavDropdown.Item>
+                <NavDropdown.Item href="App.jsx/#produk-unggulan">PRODUK UNGGULAN</NavDropdown.Item>
+                <NavDropdown.Item href="App.jsx/#lokasi">LOKASI</NavDropdown.Item>
+                <NavDropdown.Item href="Pemesanan.jsx/pemesanan">PEMESANAN</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/admin">ADMIN</NavDropdown.Item>
               </NavDropdown>

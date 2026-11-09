@@ -2,7 +2,7 @@
 export const MENU_KEY = 'ayamGeybokMenu';
 export const CART_KEY = 'keranjangGeybok';
 
-const G = "/image/geybok.jpg", B = "/image/blonde.jpg", K = "/image/kriuk.jpg", E = "/image/empalGeybok.jpg";
+const G = "/image/geybok.jpg", B = "/image/blonde.jpg", K = "/image/kriuk.jpg", E = "/image/empalGeybok.jpg", C = "/image/jengkolsemur.jpg";
 const g = s => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9Gc" + s + "&s=10";
 
 /* [nama, harga, gambar, kategori] - nomor produk mengikuti urutan lama */
@@ -26,7 +26,7 @@ const DATA = [
   ["Sate Usus",4000,g("SwiXkAaM4OoY6ucCtOrvClEzNo40fiec0gaP0k94m_Yw"),"Snack"],
   ["Ikan Piyik Geybok",10000,g("QSnINm7JpKP7f1qtlkrfDGA3KJ8hPf6MlBaE6Qgdxnjw"),"Makanan"],
   ["Jengkol Goreng",6000,g("TGi6MGJrJIU8dZYxGOyGs-NCMWErihldmDSDfrzKcDY_0YTL33Z7qWYUQ"),"Makanan"],
-  ["Jengkol Semur",6000,g("TQ5YavP6NCU1mNmQQ-dxQyyTELkyXPrwDehnsvwLTe-Kg"),"Makanan"],
+  ["Jengkol Semur",6000,C,"Makanan"],
   ["Pete",8000,g("TB9l6LzPh52VAfiwrC4eOH_mti__YBkJbfbn-HdPvGmg"),"Makanan"],
   ["Terong Goreng",5000,g("SwrAf_0Xb9twKFJscraPSl5t6_CmQw_D5_duEi797v3w"),"Makanan"],
   ["Kol Goreng",5000,g("Sm5d4jFB4jxYHO6HMmNETaM-PHMgFWGAnwfeM24nZ1oA"),"Makanan"],
