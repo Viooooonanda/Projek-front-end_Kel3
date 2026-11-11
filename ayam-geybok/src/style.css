@@ -731,6 +731,80 @@ section[id] {
     color: var(--black);
 }
 
+
+/* popup login admin */
+.login-modal .modal-content {
+  background: var(--yellow-soft);
+  color: var(--brown);
+  border: 2px solid var(--header-soft);
+  border-radius: 15px;
+}
+.login-modal .modal-header {
+  background: var(--yellow-light);
+  border-bottom: 1px solid var(--header-soft);
+}
+.login-modal .modal-title {
+  color: var(--brown);
+  font-weight: bold;
+}
+.login-modal .btn-close {
+  filter: none;
+}
+.login-modal .modal-body {
+  padding: 25px;
+}
+.login-modal h4 {
+  color: var(--brown);
+  font-weight: bold;
+  font-size: 20px;
+}
+.login-modal p {
+  color: var(--brown);
+}
+.login-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--yellow);
+  color: var(--black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-size: 22px;
+}
+.login-modal .form-label {
+  color: var(--brown);
+  font-weight: 600;
+  font-size: 14px;
+}
+.login-modal .form-control {
+  background: var(--grey-field);
+  color: var(--black);
+  border: 1px solid var(--header-soft);
+  border-radius: 7px;
+  padding: 11px;
+}
+.login-modal .form-control:focus {
+  background: var(--white);
+  border-color: var(--brown);
+  box-shadow: 0 0 0 2px rgba(107, 79, 0, 0.15);
+}
+.login-btn {
+  background: var(--yellow);
+  color: var(--black);
+  border: 1px solid var(--brown);
+  padding: 11px;
+  font-weight: bold;
+  border-radius: 7px;
+}
+.login-btn:hover {
+  background: var(--header-soft);
+  color: var(--black);
+  border-color: var(--brown);
+}
+
+
 /* header */
 .header-bar {
     background: linear-gradient(90deg, var(--yellow-soft), var(--header-light));

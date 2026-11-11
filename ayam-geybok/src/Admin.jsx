@@ -10,6 +10,7 @@ import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import './style.css';
 import { MENU_AWAL, bacaMenu, simpanMenu as simpanMenuStorage, rupiah } from './MenuData.js';
+import { DATA_LOGIN } from './DataLogin.js';
 
 const KATEGORI = ['Makanan', 'Minuman', 'Snack'];
 const AWAL = MENU_AWAL;
@@ -50,6 +51,23 @@ function Admin() {
   const [editId, setEditId] = useState(null);
   const [err, setErr] = useState({});
   const [pesan, setPesan] = useState('');
+
+  const [loginBerhasil, setLoginBerhasil] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+
+  const cekLogin = (e) => {
+    e.preventDefault();
+    const akunValid = DATA_LOGIN.some((akun) => akun.username.toLowerCase() === username.trim().toLowerCase() && akun.password === password);
+
+    if (akunValid) {
+      setLoginBerhasil(true);
+      setLoginError('');
+    } else {
+      setLoginError('Username dan Password Salah!');
+    }
+  };
 
   const simpan = (list) => {
     setMenu(list);
@@ -109,6 +127,35 @@ function Admin() {
 
   return (
     <div className="adm-page">
+
+      {/* POPUP LOGIN ADMIN */}
+      <Modal show={!loginBerhasil} onHide={() => window.location.href = '/#home'} centered backdrop="static" keyboard={false} className="login-modal">
+        <Modal.Header closeButton>
+          <Modal.Title>Login Admin</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="login-icon">👤</div>
+          <h4 className="text-center">Login Admin</h4>
+          <p className="text-center text-muted">Ayam Geybok Bang Jarwo</p>
+          <p className="text-center small">Silakan login untuk mengakses dashboard admin.</p>
+
+          {/* Form login admin */}
+          <Form onSubmit={cekLogin}>
+            <Form.Group className="mb-3">
+              <Form.Label>Username</Form.Label>
+              <Form.Control type="text" placeholder="Masukkan Username Anda" value={username} onChange={(e) => setUsername(e.target.value)} required />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Masukkan Password Anda" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            </Form.Group>
+            {loginError && <p className="text-danger small">{loginError}</p>}
+            <Button type="submit" className="login-btn w-100">LOGIN</Button>
+          </Form>
+          <p className="text-center small mt-3 mb-0">Hanya admin yang dapat mengakses halaman ini.</p>
+        </Modal.Body>
+      </Modal>
+
       {/* SIDEBAR */}
       <aside className={'adm-sidebar' + (sidebarBuka ? ' buka' : '')}>
         <div className="adm-brand">
@@ -210,12 +257,12 @@ function Admin() {
             <Card className="adm-card">
               <Card.Body>
                 <Card.Title>⚙️ Pengaturan</Card.Title>
-                <Card.Text>Tombol di bawah akan menghapus semua data menu dan mengembalikannya ke data awal.</Card.Text>
+                <Card.Text>Klik tombol untuk reset data menu dan mengembalikannya ke data awal.</Card.Text>
                 <Button
                   className="adm-btn-hapus"
                   onClick={() => { if (window.confirm('Kembalikan menu ke data awal?')) { simpan(AWAL); setPesan('Data direset'); } }}
                 >
-                  Reset data menu
+                  Reset
                 </Button>
               </Card.Body>
             </Card>

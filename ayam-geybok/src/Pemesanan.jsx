@@ -19,6 +19,7 @@ function Pemesanan() {
   const [hp, setHp] = useState('');
   const [catatan, setCatatan] = useState('');
   const [bayar, setBayar] = useState('');
+  const [jenisPesanan, setJenisPesanan] = useState('');
   const [items, setItems] = useState(() => bacaKeranjang(menu));
   const [pilih, setPilih] = useState('');
   const [jumlah, setJumlah] = useState(1);
@@ -62,13 +63,18 @@ function Pemesanan() {
       nama: nama.trim().length < 2 ? 'Nama wajib diisi.' : '',
       hp: /^08\d{8,12}$/.test(hpBersih) ? '' : 'Masukkan nomor HP yang benar, contoh 08123456789.',
       produk: items.length ? '' : 'Tambahkan minimal satu produk ke pesanan.',
+      jenisPesanan: jenisPesanan ? '' : 'Pilih jenis pesanan.',
       bayar: bayar ? '' : 'Pilih metode pembayaran.',
     };
     setErr(baru);
     if (Object.values(baru).some(Boolean)) return;
     setPesanan({
       no: 'AGJ-' + String(Date.now()).slice(-6),
-      nama: nama.trim(), hp: hp.trim(), catatan: catatan.trim(), bayar,
+      nama: nama.trim(),
+      hp: hp.trim(),
+      catatan: catatan.trim(),
+      jenisPesanan: jenisPesanan,
+      bayar,
       items: items.map((c) => ({ ...c })), total,
     });
     setStep('konfirmasi');
@@ -86,7 +92,7 @@ function Pemesanan() {
 
   const selesai = () => {
     ubahItems([]);
-    setNama(''); setHp(''); setCatatan(''); setBayar(''); setErr({});
+    setNama(''); setHp(''); setCatatan(''); setJenisPesanan(''); setBayar(''); setErr({});
     setStep('sukses');
   };
 
@@ -204,6 +210,31 @@ function Pemesanan() {
           </Form.Group>
 
           <Form.Group className="mb-3">
+            <Form.Label>Jenis Pesanan<span className="req">*</span></Form.Label>
+            <div className="pay">
+              {['Take Away', 'Dine In', 'Delivered'].map((m) => (
+                <Form.Check
+                  key={m}
+                  type="radio"
+                  name="jenisPesanan"
+                  id={`jenis-${m}`}
+                  label={m}
+                  className={'pay-opt' + (jenisPesanan === m ? ' aktif' : '')}
+
+                  // TAMBAHAN: Mengatur pilihan jenis pesanan
+                  checked={jenisPesanan === m}
+                  onChange={() => setJenisPesanan(m)}
+                />
+              ))}
+            </div>
+
+            {/* TAMBAHAN: Pesan error jika jenis pesanan belum dipilih */}
+            {err.jenisPesanan && (
+              <div className="text-danger small mt-1">{err.jenisPesanan}</div>
+            )}
+          </Form.Group>
+
+          <Form.Group className="mb-3">
             <Form.Label>Metode Pembayaran<span className="req">*</span></Form.Label>
             <div className="pay">
               {['QRIS', 'Cash', 'Debit'].map((m) => (
@@ -279,6 +310,9 @@ function Pemesanan() {
               <div className="kv"><span>Nama</span><span>{pesanan.nama}</span></div>
               <div className="kv"><span>Nomor HP</span><span>{pesanan.hp}</span></div>
               <div className="kv"><span>Catatan</span><span>{pesanan.catatan || '-'}</span></div>
+              <div className="kv"><span>Jenis Pesanan</span><span>{pesanan.jenisPesanan === 'Dine In' && 'Dine In - Makan di tempat'}
+                {pesanan.jenisPesanan === 'Take Away' && 'Take Away - Dibungkus untuk dibawa pulang'}
+                {pesanan.jenisPesanan === 'Delivered' && 'Delivered - Diantar ke alamat pelanggan'}</span></div>
               <div className="kv"><span>Pembayaran</span><span>{pesanan.bayar}</span></div>
               {daftarPesanan(pesanan.items)}
               <div className="total"><span>Total Harga</span><b>{rupiah(pesanan.total)}</b></div>
@@ -329,7 +363,7 @@ function Pemesanan() {
             <Modal.Body>
               <div className="sukses">
                 <div className="tick"><i className="fa-solid fa-circle-check" /></div>
-                <h3>Pesanan berhasil dikirim</h3>
+                <h3>Pesanan berhasil </h3>
                 <div className="no-pesanan">{pesanan.no}</div>
                 <p>Terima kasih, {pesanan.nama}! {infoBayar}</p>
               </div>
