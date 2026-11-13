@@ -8,13 +8,20 @@ import Modal from 'react-bootstrap/Modal';
 import Badge from 'react-bootstrap/Badge';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
+import Table from 'react-bootstrap/Table';
 import './style.css';
 import { MENU_AWAL, bacaMenu, simpanMenu as simpanMenuStorage, rupiah } from './MenuData.js';
+import { bacaPesanan, updateStatusPesanan, hapusPesanan, STATUS_PESANAN } from './DataPesanan.js';
 import { DATA_LOGIN } from './DataLogin.js';
 
-const KATEGORI = ['Makanan', 'Minuman', 'Snack'];
+const KATEGORI_AWAL = ['Makanan', 'Minuman', 'Snack'];
 const AWAL = MENU_AWAL;
 const KOSONG = { nama: '', harga: '', kategori: 'Makanan', deskripsi: '', gambar: '' };
+
+function kategoriDariMenu(menu) {
+  const unik = [...new Set(menu.map((m) => m.kategori).filter(Boolean))];
+  return [...new Set([...KATEGORI_AWAL, ...unik])];
+}
 
 const rp = rupiah;
 
@@ -40,11 +47,14 @@ function kecilkanGambar(file) {
 
 const HALAMAN = {
   dashboard: ['Dashboard Admin', 'Kelola menu dan informasi website dengan mudah!', '🏠'],
+  riwayat: ['Riwayat Pemesanan', 'Lihat pesanan yang sudah dikonfirmasi dan ubah statusnya.', '🧾'],
   pengaturan: ['Pengaturan', 'Atur data aplikasi admin.', '⚙️'],
 };
 
 function Admin() {
   const [menu, setMenu] = useState(bacaMenu);
+  const [pesanan, setPesanan] = useState(bacaPesanan);
+  const [kategoriList, setKategoriList] = useState(() => kategoriDariMenu(bacaMenu()));
   const [halaman, setHalaman] = useState('dashboard');
   const [sidebarBuka, setSidebarBuka] = useState(false);
   const [form, setForm] = useState(null); // null = tertutup, objek = terbuka
@@ -71,6 +81,7 @@ function Admin() {
 
   const simpan = (list) => {
     setMenu(list);
+    setKategoriList(kategoriDariMenu(list));
     if (!simpanMenuStorage(list)) {
       setPesan('Penyimpanan penuh. Coba pakai gambar yang lebih kecil.');
     }
@@ -122,7 +133,21 @@ function Admin() {
     }
   };
 
-  const buka = (nama) => { setHalaman(nama); setSidebarBuka(false); };
+  const buka = (nama) => {
+    setHalaman(nama);
+    setSidebarBuka(false);
+    if (nama === 'riwayat') setPesanan(bacaPesanan());
+  };
+  const ubahStatus = (id, status) => {
+    setPesanan(updateStatusPesanan(id, status));
+    setPesan('Status pesanan diperbarui');
+  };
+  const hapusRiwayat = (id, no) => {
+    if (window.confirm(`Hapus riwayat pesanan ${no || id}?`)) {
+      setPesanan(hapusPesanan(id));
+      setPesan('Riwayat pesanan dihapus');
+    }
+  };
   const [judul, subjudul] = HALAMAN[halaman];
 
   return (
@@ -199,7 +224,7 @@ function Admin() {
           <h1>{judul}</h1>
           <p className="adm-sub">{subjudul}</p>
 
-          {halaman !== 'pengaturan' ? (
+          {halaman === 'dashboard' && (
             <>
               {/* SAMBUTAN + TAMBAH MENU */}
               <Row className="g-3 mb-4">
@@ -211,9 +236,13 @@ function Admin() {
                         <Card.Title className="mb-1">Ayam Geybok Bang Jarwo</Card.Title>
                         <Card.Text>Selamat datang, Admin!</Card.Text>
                       </div>
-                      <div className="adm-stat ms-auto">
+                      <div className="adm-stat ms-auto me-3">
                         <b>{menu.length}</b>
                         <span>Total menu</span>
+                      </div>
+                      <div className="adm-stat">
+                        <b>{pesanan.length}</b>
+                        <span>Riwayat pesanan</span>
                       </div>
                     </Card.Body>
                   </Card>
@@ -253,7 +282,90 @@ function Admin() {
                 <p className="adm-kosong">Belum ada menu. Klik “Tambah Menu” untuk mulai.</p>
               )}
             </>
-          ) : (
+          )}
+
+          {halaman === 'riwayat' && (
+            <Card className="adm-card">
+              <Card.Body>
+                <div className="d-flex align-items-center justify-content-between mb-3 gap-2 flex-wrap">
+                  <Card.Title className="mb-0">🧾 Riwayat Pemesanan</Card.Title>
+                  <Button className="adm-btn-abu" size="sm" onClick={() => setPesanan(bacaPesanan())}>Muat ulang</Button>
+                </div>
+                {pesanan.length ? (
+                  <div className="table-responsive">
+                    <Table hover className="adm-riwayat-table align-middle">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Waktu</th>
+                          <th>Pemesan</th>
+                          <th>Pesanan</th>
+                          <th>Total</th>
+                          <th>Bayar / Jenis</th>
+                          <th>Status</th>
+                          <th>Ubah Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[...pesanan].reverse().map((p, i) => {
+                          const status = p.status || 'Dikonfirmasi';
+                          const warna = status === 'Selesai' ? 'success' : status === 'Diproses' ? 'warning' : status === 'Dibatalkan' ? 'danger' : 'info';
+                          const items = Array.isArray(p.items) ? p.items : [];
+                          return (
+                            <tr key={p.id || p.no || i}>
+                              <td>
+                                <div className="d-flex align-items-center gap-2">
+                                  <span>{p.no || p.id || '-'}</span>
+                                  <Button
+                                    variant="outline-danger"
+                                    size="sm"
+                                    className="py-0 px-2"
+                                    onClick={() => hapusRiwayat(p.id || p.no, p.no || p.id)}
+                                    aria-label={`Hapus riwayat ${p.no || p.id}`}
+                                    title="Hapus riwayat"
+                                  >
+                                    Hapus
+                                  </Button>
+                                </div>
+                              </td>
+                              <td>{p.waktu ? new Date(p.waktu).toLocaleString('id-ID') : '-'}</td>
+                              <td>
+                                <div><b>{p.nama || '-'}</b></div>
+                                <div className="text-muted small">{p.hp || '-'}</div>
+                                {p.catatan ? <div className="small">Catatan: {p.catatan}</div> : null}
+                              </td>
+                              <td>
+                                <ul className="adm-pesanan-items mb-0">
+                                  {items.map((it, idx) => (
+                                    <li key={idx}>{it.nama || `Produk #${it.id}`} × {it.qty}</li>
+                                  ))}
+                                </ul>
+                              </td>
+                              <td><b>{rp(p.total)}</b></td>
+                              <td>
+                                <div>{p.bayar || '-'}</div>
+                                <div className="text-muted small">{p.jenisPesanan || '-'}</div>
+                              </td>
+                              <td><Badge bg={warna}>{status}</Badge></td>
+                              <td>
+                                <Form.Select size="sm" value={status} onChange={(e) => ubahStatus(p.id || p.no, e.target.value)} aria-label="Ubah status pesanan">
+                                  {STATUS_PESANAN.map((s) => <option key={s} value={s}>{s}</option>)}
+                                </Form.Select>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </Table>
+                  </div>
+                ) : (
+                  <p className="adm-kosong mb-0">Belum ada riwayat pemesanan. Pesanan yang dikonfirmasi dari halaman pemesanan akan muncul di sini.</p>
+                )}
+              </Card.Body>
+            </Card>
+          )}
+
+          {halaman === 'pengaturan' && (
             <Card className="adm-card">
               <Card.Body>
                 <Card.Title>⚙️ Pengaturan</Card.Title>
@@ -315,8 +427,24 @@ function Admin() {
 
                 <Form.Group as={Col} controlId="formKategori">
                   <Form.Label>Kategori</Form.Label>
-                  <Form.Select value={form.kategori} onChange={isi('kategori')}>
-                    {KATEGORI.map((k) => <option key={k}>{k}</option>)}
+                  <Form.Select
+                    value={form.kategori}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val === '__tambah__') {
+                        const nama = window.prompt('Masukkan nama kategori baru:');
+                        if (nama && nama.trim()) {
+                          const baru = nama.trim();
+                          setKategoriList((list) => [...new Set([...list, baru])]);
+                          setForm((f) => ({ ...f, kategori: baru }));
+                        }
+                        return;
+                      }
+                      isi('kategori')(e);
+                    }}
+                  >
+                    {kategoriList.map((k) => <option key={k} value={k}>{k}</option>)}
+                    <option value="__tambah__">+ Tambah kategori baru...</option>
                   </Form.Select>
                 </Form.Group>
               </Row>

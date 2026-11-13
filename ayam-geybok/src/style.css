@@ -1648,3 +1648,24 @@ section[id] {
         font-size: 1rem;
     }
 }
+
+
+/* ========== ADMIN RIWAYAT PEMESANAN ========== */
+.adm-riwayat-table {
+  font-size: 13px;
+  min-width: 860px;
+}
+
+.adm-riwayat-table th {
+  white-space: nowrap;
+  color: #5b4e37;
+}
+
+.adm-pesanan-items {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.adm-pesanan-items li {
+  margin-bottom: 2px;
+}

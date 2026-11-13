@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Riwayat Pemesanan | Ayam Geybok Bang Jarwo</title>
+
+    <link rel="icon" href="image/logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <div class="logo">
+                <img src="image/logo.jpg" alt="Logo UMKM">
+            </div>
+
+            <nav>
+                <a href="index.html">HOME</a>
+                <a href="produk.html">PRODUK</a>
+
+                <div class="dropdown">
+                    <span class="dropdown-toggle" tabindex="0">INFORMASI ▼</span>
+
+                    <div class="dropdown-content">
+                        <a href="index.html#produk-unggulan">PRODUK UNGGULAN</a>
+                        <a href="index.html#lokasi">LOKASI</a>
+                        <a href="pemesanan.html">PEMESANAN</a>
+                    </div>
+                </div>
+                <a href="admin.html" class="active" aria-current="page">ADMIN</a>
+            </nav>
+        </header>
+
+        <!-- RIWAYAT PEMESANAN -->
+        <section class="table-section admin-section">
+            <h2 class="table-title">Riwayat Pemesanan</h2>
+            <p class="admin-subtitle">Daftar pesanan yang sudah dikonfirmasi dari halaman pemesanan. Ubah status menjadi Diproses, Selesai, atau Dibatalkan.</p>
+
+            <div id="riwayat-container" class="admin-riwayat">
+                <p class="admin-empty">Memuat riwayat...</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-content">
+                <h3>AYAM GEYBOK BANG JARWO</h3>
+                <p>Kuliner ayam dengan cita rasa khas dan harga terjangkau.</p>
+
+                <div class="social">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="js/pesanan.js"></script>
+</body>
+
+</html>

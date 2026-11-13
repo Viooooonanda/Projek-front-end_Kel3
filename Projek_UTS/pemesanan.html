@@ -34,6 +34,7 @@
                         <a href="pemesanan.html">PEMESANAN</a>
                     </div>
                 </div>
+                <a href="admin.html">ADMIN</a>
             </nav>
         </header>
 
@@ -49,8 +50,8 @@
 
                 <div class="order-container">
 
-                    <!-- GANTI action="#" dengan tujuan pengiriman form (mis. Formspree / mailto) -->
-                    <form onsubmit="event.preventDefault(); this.reset();">
+                    <!-- Form pemesanan: saat dikonfirmasi, data disimpan ke riwayat (js/pesanan.js) -->
+                    <form id="form-pemesanan">
 
 
                         <!-- NAMA -->
@@ -204,7 +205,7 @@
 
     </div>
 
-
+    <script src="js/pesanan.js"></script>
 </body>
 
 </html>

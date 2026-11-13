@@ -939,3 +939,116 @@ tr:nth-child(even) {
         gap: 6px;
     }
 }
+
+/* ========== ADMIN RIWAYAT PEMESANAN ========== */
+.admin-section {
+    min-height: 60vh;
+}
+
+.admin-subtitle {
+    text-align: center;
+    margin: -20px auto 30px;
+    max-width: 700px;
+    color: #8b7a5e;
+    font-size: 14px;
+}
+
+.admin-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #8b7a5e;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.admin-table-wrap {
+    overflow-x: auto;
+}
+
+.admin-table {
+    min-width: 980px;
+}
+
+.admin-table th,
+.admin-table td {
+    text-align: left;
+    vertical-align: top;
+    font-size: 13px;
+}
+
+.admin-table th {
+    white-space: nowrap;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: #8b7355;
+    white-space: nowrap;
+}
+
+.status-badge.status-dikonfirmasi {
+    background: #2e7d9a;
+}
+
+.status-badge.status-diproses {
+    background: #c27c2c;
+}
+
+.status-badge.status-selesai {
+    background: #2e7d32;
+}
+
+.status-badge.status-dibatalkan {
+    background: #c62828;
+}
+
+.status-select {
+    padding: 6px 8px;
+    border: 1px solid #e0d6c8;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 13px;
+    color: #3e3428;
+    cursor: pointer;
+}
+
+.status-select:focus {
+    outline: none;
+    border-color: #c9a961;
+    box-shadow: 0 0 0 2px rgba(201, 169, 97, 0.15);
+}
+
+@media (max-width: 768px) {
+    .admin-subtitle {
+        margin-top: -10px;
+        font-size: 13px;
+        padding: 0 10px;
+    }
+}
+
+.admin-no-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-hapus-pesanan {
+    padding: 4px 8px;
+    border: 1px solid #c62828;
+    background: #fff;
+    color: #c62828;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-hapus-pesanan:hover {
+    background: #c62828;
+    color: #fff;
+}

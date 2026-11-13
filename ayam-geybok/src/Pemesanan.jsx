@@ -11,6 +11,7 @@ import Badge from 'react-bootstrap/Badge';
 import Modal from 'react-bootstrap/Modal';
 import './style.css';
 import { bacaMenu, bacaKeranjang, simpanKeranjang, cariProduk, rupiah } from './MenuData.js';
+import { tambahPesanan } from './DataPesanan.js';
 
 
 function Pemesanan() {
@@ -82,9 +83,23 @@ function Pemesanan() {
 
   const konfirmasi = () => {
     try {
-      const lama = JSON.parse(localStorage.getItem('pesananGeybok')) || [];
-      lama.push({ ...pesanan, waktu: new Date().toISOString() });
-      localStorage.setItem('pesananGeybok', JSON.stringify(lama));
+      const itemDetail = pesanan.items.map((c) => {
+        const p = cari(c.id);
+        return {
+          id: c.id,
+          qty: c.qty,
+          nama: p?.nama || 'Produk',
+          harga: p?.harga || 0,
+          subtotal: (p?.harga || 0) * c.qty,
+        };
+      });
+      tambahPesanan({
+        ...pesanan,
+        id: pesanan.no,
+        status: 'Dikonfirmasi',
+        waktu: new Date().toISOString(),
+        items: itemDetail,
+      });
     } catch (e) { /* abaikan */ }
     if (pesanan.bayar === 'QRIS') setStep('qris');
     else selesai();
