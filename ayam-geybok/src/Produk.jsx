@@ -96,7 +96,7 @@ function Produk() {
             </div>
           );
         }) : (
-          <p className="kosong-pr">Keranjang masih kosong.<br />Pilih menu favoritmu dulu!</p>
+          <p className="kosong-pr">Keranjang masih kosong.<br />Silahkan tambahkan menu favoritmu dulu!</p>
         )}
       </div>
       <div className="total-pr">
