@@ -110,3 +110,10 @@ export const cariProduk = (id, menu = bacaMenu()) =>
 
 export const rupiah = (nominal) =>
   'Rp ' + Number(nominal || 0).toLocaleString('id-ID');
+
+export const KATEGORI_BAWAAN = ['Makanan', 'Minuman', 'Snack'];
+
+export function daftarKategori(menu = bacaMenu()) {
+  const unik = [...new Set(menu.map((m) => m.kategori).filter(Boolean))];
+  return [...new Set([...KATEGORI_BAWAAN, ...unik])];
+}

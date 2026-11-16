@@ -118,8 +118,9 @@ function App() {
           <Col lg={6}>
             <Ratio aspectRatio="16x9">
               <iframe
-                title="Peta lokasi Ayam Geybok Bang Jarwo"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3110.299728884242!2d106.785!3d-6.166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7!2sAyam%20Geybok%20Bang%20Jarwo!5e0!3m2!1sid!2sid!4v1"
+                title="Lokasi Ayam Geybok Bang Jarwo Trisakti (Tomang)"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.724034854093!2d106.79082577476268!3d-6.167697193819518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7003b8c254d%3A0x86d32a15542ced8f!2sAyam%20Geybok%20Bang%20Jarwo%20Trisakti%20(Tomang)!5e0!3m2!1sen!2sus!4v1794808156971!5m2!1sen!2sus"
+                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"

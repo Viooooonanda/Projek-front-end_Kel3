@@ -13,18 +13,21 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import './style.css';
-import { bacaMenu, bacaKeranjang, simpanKeranjang, cariProduk, rupiah } from './MenuData.js';
+import { bacaMenu, bacaKeranjang, simpanKeranjang, cariProduk, rupiah, daftarKategori } from './MenuData.js';
 
-const KATEGORI = [
-  { k: 'Semua', ikon: '' },
-  { k: 'Makanan', ikon: 'fa-solid fa-drumstick-bite' },
-  { k: 'Minuman', ikon: 'fa-solid fa-glass-water' },
-  { k: 'Snack', ikon: 'fa-solid fa-cookie-bite' },
-];
+const IKON_KATEGORI = {
+  Makanan: 'fa-solid fa-drumstick-bite',
+  Minuman: 'fa-solid fa-glass-water',
+  Snack: 'fa-solid fa-cookie-bite',
+};
 
 
 function Produk() {
   const [menu] = useState(bacaMenu);
+  const KATEGORI = [
+    { k: 'Semua', ikon: '' },
+    ...daftarKategori(menu).map((k) => ({ k, ikon: IKON_KATEGORI[k] || 'fa-solid fa-tag' })),
+  ];
   const [kategori, setKategori] = useState('Semua');
   const [qty, setQty] = useState({});
   const [cart, setCart] = useState(() => bacaKeranjang(menu));
@@ -123,9 +126,9 @@ function Produk() {
               <Nav.Link href="/">HOME</Nav.Link>
               <Nav.Link href="/produk" active>PRODUK</Nav.Link>
               <NavDropdown title="INFORMASI" align="end">
-                <NavDropdown.Item href="App.jsx/#produk-unggulan">PRODUK UNGGULAN</NavDropdown.Item>
-                <NavDropdown.Item href="App.jsx/#lokasi">LOKASI</NavDropdown.Item>
-                <NavDropdown.Item href="Pemesanan.jsx/pemesanan">PEMESANAN</NavDropdown.Item>
+                <NavDropdown.Item href="/#produk-unggulan">PRODUK UNGGULAN</NavDropdown.Item>
+                <NavDropdown.Item href="/#lokasi">LOKASI</NavDropdown.Item>
+                <NavDropdown.Item href="/pemesanan">PEMESANAN</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/admin">ADMIN</NavDropdown.Item>
               </NavDropdown>

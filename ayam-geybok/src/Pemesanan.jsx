@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 import Modal from 'react-bootstrap/Modal';
 import './style.css';
-import { bacaMenu, bacaKeranjang, simpanKeranjang, cariProduk, rupiah } from './MenuData.js';
+import { bacaMenu, bacaKeranjang, simpanKeranjang, cariProduk, rupiah, daftarKategori } from './MenuData.js';
 import { tambahPesanan } from './DataPesanan.js';
 
 
@@ -29,7 +29,9 @@ function Pemesanan() {
   const [pesanan, setPesanan] = useState(null);
 
   const cari = (id) => cariProduk(id, menu);
-  const GRUP_ID = ['Makanan', 'Minuman', 'Snack'].map((label) => [label, menu.filter((p) => p.kategori === label)]);
+  const GRUP_ID = daftarKategori(menu)
+    .map((label) => [label, menu.filter((p) => p.kategori === label)])
+    .filter(([, list]) => list.length > 0);
   const total = items.reduce((s, c) => s + c.qty * (cari(c.id)?.harga || 0), 0);
   const jumlahItem = items.reduce((s, c) => s + c.qty, 0);
 

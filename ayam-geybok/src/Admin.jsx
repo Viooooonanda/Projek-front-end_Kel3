@@ -51,6 +51,17 @@ const HALAMAN = {
   pengaturan: ['Pengaturan', 'Atur data aplikasi admin.', '⚙️'],
 };
 
+const LOGIN_KEY = 'adminLoginGeybok';
+const bacaLogin = () => {
+  try { return sessionStorage.getItem(LOGIN_KEY) === 'ya'; } catch { return false; }
+};
+const simpanLogin = () => {
+  try { sessionStorage.setItem(LOGIN_KEY, 'ya'); } catch { /* abaikan jika storage diblokir */ }
+};
+const hapusLogin = () => {
+  try { sessionStorage.removeItem(LOGIN_KEY); } catch { /* abaikan */ }
+};
+
 function Admin() {
   const [menu, setMenu] = useState(bacaMenu);
   const [pesanan, setPesanan] = useState(bacaPesanan);
@@ -62,7 +73,7 @@ function Admin() {
   const [err, setErr] = useState({});
   const [pesan, setPesan] = useState('');
 
-  const [loginBerhasil, setLoginBerhasil] = useState(false);
+  const [loginBerhasil, setLoginBerhasil] = useState(bacaLogin);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
@@ -73,6 +84,7 @@ function Admin() {
 
     if (akunValid) {
       setLoginBerhasil(true);
+      simpanLogin();
       setLoginError('');
     } else {
       setLoginError('Username dan Password Salah!');
@@ -191,7 +203,7 @@ function Admin() {
           {Object.entries(HALAMAN).map(([k, [nama, , ikon]]) => (
             <button key={k} type="button" className={halaman === k ? 'aktif' : ''} onClick={() => buka(k)}>
               <span className="ic">{ikon}</span>
-              {k === 'menu' ? 'Kelola Menu' : nama.replace(' Admin', '')}
+              {nama.replace(' Admin', '')}
             </button>
           ))}
         </nav>
@@ -203,6 +215,7 @@ function Admin() {
               const yakin = window.confirm('Yakin ingin logout?');
 
               if (yakin) {
+                hapusLogin();
                 window.location.href = '/#home';
               }
             }}
