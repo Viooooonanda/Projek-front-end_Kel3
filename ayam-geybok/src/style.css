@@ -1512,6 +1512,31 @@ section[id] {
     gap: 8px;
 }
 
+/* =========================
+   FORM KONTEN WEBSITE (ADMIN)
+   ========================= */
+.adm-content .adm-card .form-control {
+    background: var(--grey-field);
+    border: 1px solid var(--header-soft);
+    border-radius: 8px;
+}
+
+.adm-content .adm-card .form-control:focus {
+    background: var(--white);
+    border-color: var(--brown);
+    box-shadow: 0 0 0 3px var(--yellow-soft);
+}
+
+.adm-konten-preview {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--header-soft);
+    background: var(--grey-field);
+}
+
 /* form (modal) */
 .adm-modal .modal-content {
     background: var(--pure-white-gold);
@@ -1669,3 +1694,51 @@ section[id] {
 .adm-pesanan-items li {
   margin-bottom: 2px;
 }
+
+/* =========================
+   LOGIN ADMIN 
+   ========================= */
+.login-modal .modal-dialog {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+}
+.login-modal .modal-dialog.modal-dialog-centered {
+    transform: none;
+}
+
+.login-modal .modal-content {
+    min-height: 100vh;
+    border: 0;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+}
+.login-modal .modal-header {
+    flex: 0 0 auto;
+    padding: 12px 20px;
+}
+
+.login-modal .modal-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+    padding: 24px 40px;
+}
+
+.login-modal .modal-body form {
+    width: 100%;
+}
+
+.login-modal .modal-body .form-control,
+.login-modal .modal-body .login-btn {
+    width: 100%;
+}
+
+

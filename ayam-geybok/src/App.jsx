@@ -12,13 +12,14 @@ import './style.css';
 import Produk from './Produk.jsx';
 import Pemesanan from './Pemesanan.jsx';
 import AdminDashboard from './Admin.jsx';
-import { bacaMenu, rupiah } from './MenuData.js';
+import { bacaMenu, rupiah, bacaKonten } from './MenuData.js';
 
 
 function App() {
   const [menu] = useState(bacaMenu);
-  const produkUnggulan = ['Paket Ayam Blonde', 'Paket Ayam Geybok 1', 'Paket Ayam Kriuk']
-    .map((nama) => menu.find((item) => item.nama === nama))
+  const [konten] = useState(bacaKonten);
+  const produkUnggulan = [konten.unggulan.pertama, konten.unggulan.kedua, konten.unggulan.ketiga]
+    .map((id) => menu.find((item) => item.id === Number(id)))
     .filter(Boolean);
 
   // Routing sederhana berdasarkan alamat halaman, tanpa library tambahan.
@@ -58,19 +59,13 @@ function App() {
         <Container fluid>
           <Row className="align-items-center justify-content-between gx-5 gy-4">
             <Col lg={6} className="bj-hero-text">
-              <h1>AYAM GEYBOK BANG JARWO</h1>
-              <p>
-                Ayam Geybok Bang Jarwo hadir menyajikan kelezatan kuliner
-                nusantara dengan cita rasa khas yang menggugah selera.
-                Menggunakan bahan-bahan segar dan racikan bumbu spesial, kami
-                siap memanjakan lidah anda dengan sensasi pedas gurih yang
-                tiada tanding.
-              </p>
-              <Button variant="outline-dark" href="/produk" className="bj-btn">LIHAT PRODUK</Button>
+              <h1>{konten.beranda.judul}</h1>
+              <p>{konten.beranda.deskripsi}</p>
+              <Button variant="outline-dark" href="/produk" className="bj-btn">{konten.beranda.tombolProduk}</Button>
             </Col>
             <Col lg={6} className="d-flex justify-content-center">
               <img
-                src="/image/images1.jpg"
+                src={konten.gambar.hero}
                 alt="Ayam Geybok Bang Jarwo"
                 className="bj-hero-image"
               />
@@ -81,7 +76,7 @@ function App() {
 
       {/* ===== PRODUK UNGGULAN ===== */}
       <section className="bj-products" id="produk-unggulan">
-        <h2>Produk Unggulan</h2>
+        <h2>{konten.beranda.produkUnggulan}</h2>
         <Row className="bj-product-row">
           {produkUnggulan.map((item) => (
             <Col key={item.nama} xs={12} sm={4}>
@@ -105,13 +100,8 @@ function App() {
         <Row className="align-items-center g-4">
           <Col lg={6}>
             <Container className="location-text">
-              <h2>Lokasi</h2>
-              <p>
-                Ayam Geybok Bang Jarwo Trisakti (Tomang) RQJV+W9C,
-                Jl. Tanjung Gedong, RT.1/RW.9, Tomang,
-                Kec. Grogol Petamburan, Kota Jakarta Barat,
-                Daerah Khusus Ibukota Jakarta 11440
-              </p>
+              <h2>{konten.beranda.lokasiJudul}</h2>
+              <p>{konten.beranda.lokasiAlamat}</p>
             </Container>
           </Col>
 
@@ -136,9 +126,7 @@ function App() {
           <Col xs={12}>
             <h3>AYAM GEYBOK BANG JARWO</h3>
 
-            <p>
-              Kuliner ayam dengan cita rasa khas dan harga terjangkau.
-            </p>
+            <p>Kuliner ayam dengan cita rasa khas dan harga terjangkau.</p>
 
             <Row className="justify-content-center">
               <Col xs="auto">

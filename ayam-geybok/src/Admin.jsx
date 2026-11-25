@@ -10,7 +10,7 @@ import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import Table from 'react-bootstrap/Table';
 import './style.css';
-import { MENU_AWAL, bacaMenu, simpanMenu as simpanMenuStorage, rupiah } from './MenuData.js';
+import { MENU_AWAL, bacaMenu, simpanMenu as simpanMenuStorage, rupiah, bacaKonten, simpanKonten, KONTEN_AWAL } from './MenuData.js';
 import { bacaPesanan, updateStatusPesanan, hapusPesanan, STATUS_PESANAN } from './DataPesanan.js';
 import { DATA_LOGIN } from './DataLogin.js';
 
@@ -26,13 +26,13 @@ function kategoriDariMenu(menu) {
 const rp = rupiah;
 
 /* perkecil gambar supaya muat di localStorage */
-function kecilkanGambar(file) {
+function kecilkanGambar(file, maks = 480) {
   return new Promise((resolve) => {
     const reader = new FileReader();
     reader.onload = () => {
       const img = new Image();
       img.onload = () => {
-        const skala = Math.min(1, 480 / Math.max(img.width, img.height));
+        const skala = Math.min(1, maks / Math.max(img.width, img.height));
         const c = document.createElement('canvas');
         c.width = img.width * skala;
         c.height = img.height * skala;
@@ -48,6 +48,7 @@ function kecilkanGambar(file) {
 const HALAMAN = {
   dashboard: ['Dashboard Admin', 'Kelola menu dan informasi website dengan mudah!', '🏠'],
   riwayat: ['Riwayat Pemesanan', 'Lihat pesanan yang sudah dikonfirmasi dan ubah statusnya.', '🧾'],
+  konten: ['Ubah Konten Website', 'Ubah teks, lokasi, dan gambar yang tampil di halaman Home.', '✏️'],
   pengaturan: ['Pengaturan', 'Atur data aplikasi admin.', '⚙️'],
 };
 
@@ -72,6 +73,8 @@ function Admin() {
   const [editId, setEditId] = useState(null);
   const [err, setErr] = useState({});
   const [pesan, setPesan] = useState('');
+
+  const [konten, setKonten] = useState(bacaKonten);
 
   const [loginBerhasil, setLoginBerhasil] = useState(bacaLogin);
   const [username, setUsername] = useState('');
@@ -148,7 +151,7 @@ function Admin() {
   const buka = (nama) => {
     setHalaman(nama);
     setSidebarBuka(false);
-    if (nama === 'riwayat') setPesanan(bacaPesanan());
+    if (nama === 'riwayat' || nama === 'dashboard') setPesanan(bacaPesanan());
   };
   const ubahStatus = (id, status) => {
     setPesanan(updateStatusPesanan(id, status));
@@ -160,6 +163,72 @@ function Admin() {
       setPesan('Riwayat pesanan dihapus');
     }
   };
+
+  const simpanKontenWebsite = (e) => {
+    e.preventDefault();
+    setPesan(simpanKonten(konten) ? 'Konten website disimpan' : 'Gagal menyimpan konten website');
+  };
+
+  const ubahKonten = (grup, kunci) => (e) =>
+    setKonten((k) => ({ ...k, [grup]: { ...k[grup], [kunci]: e.target.value } }));
+
+  const resetKonten = () => {
+    if (window.confirm('Kembalikan semua teks website ke konten awal?')) {
+      const awal = JSON.parse(JSON.stringify(KONTEN_AWAL));
+      setKonten(awal);
+      simpanKonten(awal);
+      setPesan('Konten website dikembalikan ke awal');
+    }
+  };
+
+  const fieldKonten = (grup, kunci, label, panjang = false) => (
+    <Form.Group className="mb-3" key={kunci}>
+      <Form.Label className="fw-bold small">{label}</Form.Label>
+      {panjang ? (
+        <Form.Control as="textarea" rows={3} value={konten[grup][kunci]} onChange={ubahKonten(grup, kunci)} />
+      ) : (
+        <Form.Control value={konten[grup][kunci]} onChange={ubahKonten(grup, kunci)} />
+      )}
+    </Form.Group>
+  );
+
+  const fieldGambar = (kunci, label) => (
+    <Form.Group className="mb-3" key={kunci}>
+      <Form.Label className="fw-bold small">{label}</Form.Label>
+      <div className="d-flex align-items-center gap-2 flex-wrap">
+        <img src={konten.gambar[kunci]} alt={`Pratinjau ${label}`} className="adm-konten-preview" />
+        <div className="flex-grow-1">
+          <Form.Control
+            value={konten.gambar[kunci]}
+            onChange={ubahKonten('gambar', kunci)}
+            placeholder="/image/nama.jpg atau https://..."
+          />
+          <Form.Control
+            type="file"
+            accept="image/*"
+            className="mt-2"
+            onChange={async (e) => {
+              const file = e.target.files[0];
+              if (!file) return;
+              const data = await kecilkanGambar(file, 800);
+              ubahKonten('gambar', kunci)({ target: { value: data } });
+            }}
+          />
+        </div>
+      </div>
+    </Form.Group>
+  );
+
+  const fieldUnggulan = (kunci, label) => (
+    <Form.Group className="mb-3" key={kunci}>
+      <Form.Label className="fw-bold small">{label}</Form.Label>
+      <Form.Select value={konten.unggulan[kunci] ?? ''} onChange={ubahKonten('unggulan', kunci)}>
+        <option value="">— Pilih produk —</option>
+        {menu.map((m) => <option key={m.id} value={m.id}>{m.nama}</option>)}
+      </Form.Select>
+    </Form.Group>
+  );
+
   const [judul, subjudul] = HALAMAN[halaman];
 
   return (
@@ -391,6 +460,42 @@ function Admin() {
                 </Button>
               </Card.Body>
             </Card>
+          )}
+          {halaman === 'konten' && (
+            <Form onSubmit={simpanKontenWebsite}>
+              <Card className="adm-card mb-3">
+                <Card.Body>
+                  <Card.Title>Home</Card.Title>
+                  {fieldKonten('beranda', 'judul', 'Judul utama')}
+                  {fieldKonten('beranda', 'deskripsi', 'Paragraf deskripsi', true)}
+                  {fieldKonten('beranda', 'tombolProduk', 'Teks tombol Lihat Produk')}
+                  {fieldGambar('hero', 'Gambar utama Beranda')}
+                </Card.Body>
+              </Card>
+
+              <Card className="adm-card mb-3">
+                <Card.Body>
+                  <Card.Title>Produk Unggulan</Card.Title>
+                  {fieldKonten('beranda', 'produkUnggulan', 'Judul Produk Unggulan')}
+                  {fieldUnggulan('pertama', 'Produk ke-1')}
+                  {fieldUnggulan('kedua', 'Produk ke-2')}
+                  {fieldUnggulan('ketiga', 'Produk ke-3')}
+                </Card.Body>
+              </Card>
+
+              <Card className="adm-card mb-3">
+                <Card.Body>
+                  <Card.Title>Lokasi</Card.Title>
+                  {fieldKonten('beranda', 'lokasiJudul', 'Judul Lokasi')}
+                  {fieldKonten('beranda', 'lokasiAlamat', 'Alamat lokasi', true)}
+                </Card.Body>
+              </Card>
+
+              <div className="d-flex flex-wrap gap-2 mb-4">
+                <Button type="submit" className="adm-btn-utama">Simpan</Button>
+                <Button type="button" className="adm-btn-abu" onClick={resetKonten}>Reset</Button>
+              </div>
+            </Form>
           )}
         </main>
       </div>

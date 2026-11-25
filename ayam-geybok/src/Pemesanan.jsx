@@ -116,7 +116,7 @@ function Pemesanan() {
   const infoBayar = pesanan && (
     pesanan.bayar === 'QRIS' ? 'Pembayaranmu akan kami cek. Terima kasih!'
       : pesanan.bayar === 'Cash' ? 'Siapkan uang pas saat mengambil pesanan.'
-        : 'Pembayaran debit dilakukan saat pesanan diambil.');
+      : 'Pembayaran debit dilakukan saat pesanan diambil.');
 
   const daftarPesanan = (list) => list.map((c) => {
     const p = cari(c.id);
@@ -238,14 +238,12 @@ function Pemesanan() {
                   label={m}
                   className={'pay-opt' + (jenisPesanan === m ? ' aktif' : '')}
 
-                  // TAMBAHAN: Mengatur pilihan jenis pesanan
                   checked={jenisPesanan === m}
                   onChange={() => setJenisPesanan(m)}
                 />
               ))}
             </div>
 
-            {/* TAMBAHAN: Pesan error jika jenis pesanan belum dipilih */}
             {err.jenisPesanan && (
               <div className="text-danger small mt-1">{err.jenisPesanan}</div>
             )}

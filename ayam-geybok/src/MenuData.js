@@ -53,8 +53,6 @@ export function bacaMenu() {
         harga: Number(item.harga) || 0,
       }));
 
-      // Versi admin sebelumnya menyimpan tiga menu contoh saja.
-      // Pertahankan editannya, tetapi lengkapi katalog awal yang berisi 44 produk.
       const seedLama = dataLama.length === 3 &&
         dataLama.every((item, index) => item.id === MENU_AWAL[index]?.id);
       if (seedLama) {
@@ -116,4 +114,56 @@ export const KATEGORI_BAWAAN = ['Makanan', 'Minuman', 'Snack'];
 export function daftarKategori(menu = bacaMenu()) {
   const unik = [...new Set(menu.map((m) => m.kategori).filter(Boolean))];
   return [...new Set([...KATEGORI_BAWAAN, ...unik])];
+}
+
+
+// untuk ubah kontent website melalui admin
+export const KONTEN_KEY = 'kontenWebsiteGeybok';
+
+const idDariMenu = (nama) => MENU_AWAL.find((m) => m.nama === nama)?.id;
+
+export const KONTEN_AWAL = {
+    beranda: {
+        judul: 'AYAM GEYBOK BANG JARWO',
+        deskripsi: 'Ayam Geybok Bang Jarwo hadir menyajikan kelezatan kuliner nusantara dengan cita rasa khas yang menggugah selera. Menggunakan bahan-bahan segar dan racikan bumbu spesial, kami siap memanjakan lidah anda dengan sensasi pedas gurih yang tiada tanding.',
+        tombolProduk: 'LIHAT PRODUK',
+        produkUnggulan: 'Produk Unggulan',
+        lokasiJudul: 'Lokasi',
+        lokasiAlamat: 'Ayam Geybok Bang Jarwo Trisakti (Tomang) RQJV+W9C, Jl. Tanjung Gedong, RT.1/RW.9, Tomang, Kec. Grogol Petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11440',
+    },
+    unggulan: {
+        pertama: idDariMenu('Paket Ayam Blonde'),
+        kedua: idDariMenu('Paket Ayam Geybok 1'),
+        ketiga: idDariMenu('Paket Ayam Kriuk'),
+    },
+    gambar: {
+        hero: '/image/images1.jpg',
+    },
+};
+
+export function bacaKonten() {
+    try {
+        const tersimpan = JSON.parse(localStorage.getItem(KONTEN_KEY));
+        if (tersimpan && typeof tersimpan === 'object') {
+            return Object.fromEntries(
+                Object.entries(KONTEN_AWAL).map(([grup, nilai]) => [
+                    grup,
+                    { ...nilai, ...(tersimpan[grup] || {}) },
+                ])
+            );
+        }
+    } catch (error) {
+        console.warn('Konten website tidak dapat dibaca:', error);
+    }
+    return JSON.parse(JSON.stringify(KONTEN_AWAL));
+}
+
+export function simpanKonten(konten) {
+    try {
+        localStorage.setItem(KONTEN_KEY, JSON.stringify(konten));
+        return true;
+    } catch (error) {
+        console.error('Konten website gagal disimpan:', error);
+        return false;
+    }
 }
