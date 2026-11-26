@@ -1193,6 +1193,46 @@ section[id] {
     margin: 10px 0;
 }
 
+/* Struk pembelian (modal struk) */
+.struk-baris {
+    margin-top: 8px;
+}
+.struk-judul {
+    font-weight: 700;
+    color: var(--brown);
+    margin: 10px 0 6px;
+    text-align: center;
+}
+.struk-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--grey-field);
+    font-size: 14px;
+}
+.struk-nm small {
+    font-size: 12px;
+    color: var(--brown);
+}
+.struk-tt,
+.struk-sub {
+    white-space: nowrap;
+}
+.struk-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid var(--brown);
+    margin-top: 10px;
+    padding-top: 8px;
+}
+.struk-total b {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brown);
+}
+
 /* =========================
    FOOTER
 ========================= */

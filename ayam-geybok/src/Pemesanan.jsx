@@ -27,6 +27,7 @@ function Pemesanan() {
   const [err, setErr] = useState({});
   const [step, setStep] = useState(null); // null | 'konfirmasi' | 'qris' | 'sukses'
   const [pesanan, setPesanan] = useState(null);
+  const [strukModal, setStrukModal] = useState(false);
 
   const cari = (id) => cariProduk(id, menu);
   const GRUP_ID = daftarKategori(menu)
@@ -78,6 +79,7 @@ function Pemesanan() {
       catatan: catatan.trim(),
       jenisPesanan: jenisPesanan,
       bayar,
+      waktu: new Date().toISOString(),
       items: items.map((c) => ({ ...c })), total,
     });
     setStep('konfirmasi');
@@ -127,6 +129,80 @@ function Pemesanan() {
       </div>
     );
   });
+
+  // Detail struk pembelian (nama, harga per item, subtotal)
+  const strukItemDetail = (list = []) => list.map((c) => {
+    const p = cari(c.id);
+    return {
+      id: c.id, qty: c.qty,
+      nama: p?.nama || 'Produk',
+      harga: p?.harga || 0,
+      subtotal: (p?.harga || 0) * c.qty,
+    };
+  });
+
+  const htmlEscape = (s) => String(s ?? '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+  const waktuStruk = (waktu) => (waktu ? new Date(waktu).toLocaleString('id-ID') : '-');
+
+  // Struk lengkap sebagai file HTML mandiri (untuk dicetak atau disimpan)
+  const strukHtml = (p) => {
+    const baris = strukItemDetail(p.items).map((c) =>
+      `<tr><td>${htmlEscape(c.nama)} <small>× ${c.qty}</small></td>` +
+      `<td style="text-align:right">${rupiah(c.harga)}</td>` +
+      `<td style="text-align:right;font-weight:700">${rupiah(c.subtotal)}</td></tr>`).join('');
+    const kv = (label, nilai) => `<div class="kv"><span>${htmlEscape(label)}</span><span>${htmlEscape(nilai)}</span></div>`;
+    const catatanBaris = p.catatan ? kv('Catatan', p.catatan) : '';
+    return `<!DOCTYPE html>
+<html lang="id">
+<head><meta charset="UTF-8"><title>Struk ${htmlEscape(p.no || '')}</title>
+<style>
+body{font-family:'Segoe UI',Arial,sans-serif;background:#fff;color:#2e1c05;max-width:460px;margin:24px auto;padding:0 14px}
+h2{font-size:20px;text-align:center;margin:0 0 12px}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:4px 0;border-bottom:1px solid #e0c486}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+td{padding:3px 0}
+td small{font-size:11px;color:#8a6a3c}
+tr td:last-child{text-align:right}
+.total{border-top:2px solid #2e1c05;padding-top:8px;margin-top:12px}
+.total span:first-child{font-weight:700}
+.total b{font-size:18px}
+.foot{font-size:11px;color:#8a6a3c;text-align:center;margin-top:14px}
+</style></head>
+<body>
+<h2>Struk Pembelian</h2>
+${kv('No. Struk', p.no || '')}
+${kv('Waktu', waktuStruk(p.waktu))}
+${kv('Nama', p.nama || '')}
+${kv('Nomor HP', p.hp || '')}
+${kv('Jenis Pesanan', p.jenisPesanan || '')}
+${kv('Pembayaran', p.bayar || '')}
+${catatanBaris}
+<table>${baris}</table>
+<div class="total"><span>Total Harga</span><b>${rupiah(p.total || 0)}</b></div>
+<p class="foot">Ayam Geybok Bang Jarwo - Terima kasih!</p>
+</body></html>`;
+  };
+
+  const tampilStruk = () => {
+    setStrukModal(true);
+    setStep(null);
+  };
+
+  const simpanStruk = () => {
+    if (!pesanan) return;
+    const blob = new Blob([strukHtml(pesanan)], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Struk-${pesanan.no || 'AGJ'}.html`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="pemesanan-page">
@@ -339,6 +415,25 @@ function Pemesanan() {
           </>
         )}
 
+        {step === 'sukses' && pesanan && (
+          <>
+            <Modal.Body>
+              <div className="sukses">
+                <div className="tick"><i className="fa-solid fa-circle-check" /></div>
+                <h3>Pesanan berhasil </h3>
+                <div className="no-pesanan">{pesanan.no}</div>
+                <p>Terima kasih, {pesanan.nama}! {infoBayar}</p>
+              </div>
+              {daftarPesanan(pesanan.items)}
+              <div className="total"><span>Total Harga</span><b>{rupiah(pesanan.total)}</b></div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button className="btn-gelap" onClick={tampilStruk}><i className="fa-solid fa-print" /> Cetak Struk</Button>
+              <Button className="btn-gelap" href="/produk">Kembali ke Produk</Button>
+            </Modal.Footer>
+          </>
+        )}
+
         {step === 'qris' && pesanan && (
           <>
             <Modal.Header><Modal.Title>Pembayaran QRIS</Modal.Title></Modal.Header>
@@ -373,23 +468,43 @@ function Pemesanan() {
           </>
         )}
 
-        {step === 'sukses' && pesanan && (
-          <>
-            <Modal.Body>
-              <div className="sukses">
-                <div className="tick"><i className="fa-solid fa-circle-check" /></div>
-                <h3>Pesanan berhasil </h3>
-                <div className="no-pesanan">{pesanan.no}</div>
-                <p>Terima kasih, {pesanan.nama}! {infoBayar}</p>
+      </Modal>
+
+      {/* MODAL: struk pembelian */}
+      <Modal
+        show={strukModal && !!pesanan}
+        onHide={() => setStrukModal(false)}
+        centered
+        className="modal-geybok modal-struk"
+      >
+        <Modal.Header closeButton><Modal.Title>Struk Pembelian</Modal.Title></Modal.Header>
+        <Modal.Body>
+          {pesanan && (
+            <>
+              <div className="kv"><span>No. Struk</span><span>{pesanan.no}</span></div>
+              <div className="kv"><span>Waktu</span><span>{waktuStruk(pesanan.waktu)}</span></div>
+              <div className="kv"><span>Nama Pemesana</span><span>{pesanan.nama}</span></div>
+              <div className="kv"><span>Nomor HP</span><span>{pesanan.hp}</span></div>
+              <div className="kv"><span>Metode Pembayaran</span><span>{pesanan.bayar}</span></div>
+              {pesanan.catatan && <div className="kv"><span>Catatan</span><span>{pesanan.catatan}</span></div>}
+              <div className="struk-baris">
+                <div className="struk-judul">Menu Pembelian</div>
+                {strukItemDetail(pesanan.items).map((c) => (
+                  <div className="struk-item" key={c.id}>
+                    <span className="struk-nm">{c.nama} <small>× {c.qty}</small></span>
+                    <span className="struk-tt">Harga {rupiah(c.harga)}</span>
+                    <span className="struk-sub">{rupiah(c.subtotal)}</span>
+                  </div>
+                ))}
+                <div className="struk-total"><span>Total</span><b>{rupiah(pesanan.total)}</b></div>
               </div>
-              {daftarPesanan(pesanan.items)}
-              <div className="total"><span>Total Harga</span><b>{rupiah(pesanan.total)}</b></div>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button className="btn-gelap" href="/produk">Kembali ke Produk</Button>
-            </Modal.Footer>
-          </>
-        )}
+            </>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className="btn-gelap" onClick={simpanStruk}><i className="fa-solid fa-download" /> Download Struk</Button>
+          <Button className="btn-abu" onClick={() => setStrukModal(false)}>Tutup</Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );
