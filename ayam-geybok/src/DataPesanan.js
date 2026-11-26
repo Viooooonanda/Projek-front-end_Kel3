@@ -1,5 +1,4 @@
-// File JS untuk menyimpan dan mengelola data riwayat pemesanan
-// Data disimpan di localStorage browser agar tetap ada setelah halaman direfresh.
+// riwayat pesanan disimpan di localStorage, jadi tetap ada setelah refresh
 
 export const PESANAN_KEY = 'pesananGeybok';
 

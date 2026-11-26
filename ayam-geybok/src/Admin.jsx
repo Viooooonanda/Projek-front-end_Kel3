@@ -25,7 +25,7 @@ function kategoriDariMenu(menu) {
 
 const rp = rupiah;
 
-/* perkecil gambar supaya muat di localStorage */
+// gambar dikecilin biar muat di localStorage
 function kecilkanGambar(file, maks = 480) {
   return new Promise((resolve) => {
     const reader = new FileReader();
@@ -46,10 +46,10 @@ function kecilkanGambar(file, maks = 480) {
 }
 
 const HALAMAN = {
-  dashboard: ['Dashboard Admin', 'Kelola menu dan informasi website dengan mudah!', '🏠'],
-  riwayat: ['Riwayat Pemesanan', 'Lihat pesanan yang sudah dikonfirmasi dan ubah statusnya.', '🧾'],
-  konten: ['Ubah Konten Website', 'Ubah teks, lokasi, dan gambar yang tampil di halaman Home.', '✏️'],
-  pengaturan: ['Pengaturan', 'Atur data aplikasi admin.', '⚙️'],
+  dashboard: ['Dashboard Admin', 'Atur menu dan isi website.', '🏠'],
+  riwayat: ['Riwayat Pemesanan', 'Cek pesanan masuk dan ubah statusnya.', '🧾'],
+  konten: ['Ubah Konten Website', 'Ganti teks, lokasi, dan gambar di halaman Home.', '✏️'],
+  pengaturan: ['Pengaturan', 'Pengaturan panel admin.', '⚙️'],
 };
 
 const LOGIN_KEY = 'adminLoginGeybok';
@@ -57,7 +57,7 @@ const bacaLogin = () => {
   try { return sessionStorage.getItem(LOGIN_KEY) === 'ya'; } catch { return false; }
 };
 const simpanLogin = () => {
-  try { sessionStorage.setItem(LOGIN_KEY, 'ya'); } catch { /* abaikan jika storage diblokir */ }
+  try { sessionStorage.setItem(LOGIN_KEY, 'ya'); } catch { /* diabaikan */ }
 };
 const hapusLogin = () => {
   try { sessionStorage.removeItem(LOGIN_KEY); } catch { /* abaikan */ }
@@ -69,7 +69,7 @@ function Admin() {
   const [kategoriList, setKategoriList] = useState(() => kategoriDariMenu(bacaMenu()));
   const [halaman, setHalaman] = useState('dashboard');
   const [sidebarBuka, setSidebarBuka] = useState(false);
-  const [form, setForm] = useState(null); // null = tertutup, objek = terbuka
+  const [form, setForm] = useState(null); // null = tutup
   const [editId, setEditId] = useState(null);
   const [err, setErr] = useState({});
   const [pesan, setPesan] = useState('');
@@ -90,7 +90,7 @@ function Admin() {
       simpanLogin();
       setLoginError('');
     } else {
-      setLoginError('Username dan Password Salah!');
+      setLoginError('Username atau password salah.');
     }
   };
 
@@ -98,7 +98,7 @@ function Admin() {
     setMenu(list);
     setKategoriList(kategoriDariMenu(list));
     if (!simpanMenuStorage(list)) {
-      setPesan('Penyimpanan penuh. Coba pakai gambar yang lebih kecil.');
+      setPesan('Penyimpanan penuh. Coba gambar lebih kecil.');
     }
   };
 
@@ -121,8 +121,8 @@ function Admin() {
     e.preventDefault();
     const harga = parseInt(form.harga, 10);
     const baru = {
-      nama: form.nama.trim() ? '' : 'Nama menu wajib diisi.',
-      harga: harga >= 0 ? '' : 'Masukkan harga berupa angka.',
+      nama: form.nama.trim() ? '' : 'Nama menu belum diisi.',
+      harga: harga >= 0 ? '' : 'Harga harus angka.',
     };
     setErr(baru);
     if (baru.nama || baru.harga) return;
@@ -133,10 +133,10 @@ function Admin() {
     };
     if (editId) {
       simpan(menu.map((m) => (m.id === editId ? { ...m, ...data } : m)));
-      setPesan('Menu diperbarui');
+      setPesan('Menu diubah');
     } else {
       simpan([...menu, { id: Date.now(), ...data }]);
-      setPesan('Menu ditambahkan');
+      setPesan('Menu ditambah');
     }
     tutupForm();
   };
@@ -155,7 +155,7 @@ function Admin() {
   };
   const ubahStatus = (id, status) => {
     setPesanan(updateStatusPesanan(id, status));
-    setPesan('Status pesanan diperbarui');
+    setPesan('Status diubah');
   };
   const hapusRiwayat = (id, no) => {
     if (window.confirm(`Hapus riwayat pesanan ${no || id}?`)) {
@@ -166,18 +166,18 @@ function Admin() {
 
   const simpanKontenWebsite = (e) => {
     e.preventDefault();
-    setPesan(simpanKonten(konten) ? 'Konten website disimpan' : 'Gagal menyimpan konten website');
+    setPesan(simpanKonten(konten) ? 'Konten tersimpan' : 'Gagal simpan konten');
   };
 
   const ubahKonten = (grup, kunci) => (e) =>
     setKonten((k) => ({ ...k, [grup]: { ...k[grup], [kunci]: e.target.value } }));
 
   const resetKonten = () => {
-    if (window.confirm('Kembalikan semua teks website ke konten awal?')) {
+    if (window.confirm('Teks website balik ke semula?')) {
       const awal = JSON.parse(JSON.stringify(KONTEN_AWAL));
       setKonten(awal);
       simpanKonten(awal);
-      setPesan('Konten website dikembalikan ke awal');
+      setPesan('Konten balik ke semula');
     }
   };
 
@@ -223,7 +223,7 @@ function Admin() {
     <Form.Group className="mb-3" key={kunci}>
       <Form.Label className="fw-bold small">{label}</Form.Label>
       <Form.Select value={konten.unggulan[kunci] ?? ''} onChange={ubahKonten('unggulan', kunci)}>
-        <option value="">— Pilih produk —</option>
+        <option value="">— Pilih menu —</option>
         {menu.map((m) => <option key={m.id} value={m.id}>{m.nama}</option>)}
       </Form.Select>
     </Form.Group>
@@ -243,22 +243,22 @@ function Admin() {
           <div className="login-icon">👤</div>
           <h4 className="text-center">Login Admin</h4>
           <p className="text-center text-muted">Ayam Geybok Bang Jarwo</p>
-          <p className="text-center small">Silakan login untuk mengakses dashboard admin.</p>
+          <p className="text-center small">Silahkan masukan Username dan Password.</p>
 
           {/* Form login admin */}
           <Form onSubmit={cekLogin}>
             <Form.Group className="mb-3">
               <Form.Label>Username</Form.Label>
-              <Form.Control type="text" placeholder="Masukkan Username Anda" value={username} onChange={(e) => setUsername(e.target.value)} required />
+              <Form.Control type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Masukkan Password Anda" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <Form.Control type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             </Form.Group>
             {loginError && <p className="text-danger small">{loginError}</p>}
             <Button type="submit" className="login-btn w-100">LOGIN</Button>
           </Form>
-          <p className="text-center small mt-3 mb-0">Hanya admin yang dapat mengakses halaman ini.</p>
+          <p className="text-center small mt-3 mb-0">Halaman ini khusus admin.</p>
         </Modal.Body>
       </Modal>
 
@@ -281,7 +281,7 @@ function Admin() {
           <button
             type="button"
             onClick={() => {
-              const yakin = window.confirm('Yakin ingin logout?');
+              const yakin = window.confirm('Yakin mau logout?');
 
               if (yakin) {
                 hapusLogin();
@@ -316,7 +316,7 @@ function Admin() {
                       <div className="logo">🐔</div>
                       <div>
                         <Card.Title className="mb-1">Ayam Geybok Bang Jarwo</Card.Title>
-                        <Card.Text>Selamat datang, Admin!</Card.Text>
+                        <Card.Text>Halo, Admin!</Card.Text>
                       </div>
                       <div className="adm-stat ms-auto me-3">
                         <b>{menu.length}</b>
@@ -361,7 +361,7 @@ function Admin() {
                   ))}
                 </Row>
               ) : (
-                <p className="adm-kosong">Belum ada menu. Klik “Tambah Menu” untuk mulai.</p>
+                <p className="adm-kosong">Belum ada menu. Klik “Tambah Menu” dulu.</p>
               )}
             </>
           )}
@@ -441,7 +441,7 @@ function Admin() {
                     </Table>
                   </div>
                 ) : (
-                  <p className="adm-kosong mb-0">Belum ada riwayat pemesanan. Pesanan yang dikonfirmasi dari halaman pemesanan akan muncul di sini.</p>
+                  <p className="adm-kosong mb-0">Belum ada riwayat. Pesanan yang dikonfirmasi bakal muncul di sini.</p>
                 )}
               </Card.Body>
             </Card>
@@ -451,10 +451,10 @@ function Admin() {
             <Card className="adm-card">
               <Card.Body>
                 <Card.Title>⚙️ Pengaturan</Card.Title>
-                <Card.Text>Klik tombol untuk reset data menu dan mengembalikannya ke data awal.</Card.Text>
+                <Card.Text>Reset menu ke data awal kalau perlu.</Card.Text>
                 <Button
                   className="adm-btn-hapus"
-                  onClick={() => { if (window.confirm('Kembalikan menu ke data awal?')) { simpan(AWAL); setPesan('Data direset'); } }}
+                  onClick={() => { if (window.confirm('Menu balik ke data awal?')) { simpan(AWAL); setPesan('Menu balik ke awal'); } }}
                 >
                   Reset
                 </Button>
@@ -528,7 +528,7 @@ function Admin() {
               <Form.Group className="mb-3" controlId="formDeskripsi">
                 <Form.Label>Deskripsi menu</Form.Label>
                 <Form.Control
-                  as="textarea" rows={3} placeholder="Ceritakan menu ini secara singkat"
+                  as="textarea" rows={3} placeholder="Deskripsi singkat..."
                   value={form.deskripsi} onChange={isi('deskripsi')}
                 />
               </Form.Group>
@@ -550,7 +550,7 @@ function Admin() {
                     onChange={(e) => {
                       const val = e.target.value;
                       if (val === '__tambah__') {
-                        const nama = window.prompt('Masukkan nama kategori baru:');
+                        const nama = window.prompt('Nama kategori baru:');
                         if (nama && nama.trim()) {
                           const baru = nama.trim();
                           setKategoriList((list) => [...new Set([...list, baru])]);
@@ -562,7 +562,7 @@ function Admin() {
                     }}
                   >
                     {kategoriList.map((k) => <option key={k} value={k}>{k}</option>)}
-                    <option value="__tambah__">+ Tambah kategori baru...</option>
+                    <option value="__tambah__">+ Tambah kategori...</option>
                   </Form.Select>
                 </Form.Group>
               </Row>

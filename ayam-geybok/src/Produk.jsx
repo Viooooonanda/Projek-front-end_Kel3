@@ -73,7 +73,7 @@ function Produk() {
     }
   };
 
-  /* isi keranjang, dipakai di panel samping (desktop) dan Offcanvas (mobile) */
+  // isi keranjang (desktop + mobile)
   const isiKeranjang = (
     <>
       <div className="daftar-keranjang">
@@ -99,7 +99,7 @@ function Produk() {
             </div>
           );
         }) : (
-          <p className="kosong-pr">Keranjang masih kosong.<br />Pilih menu favoritmu dulu!</p>
+          <p className="kosong-pr">Keranjang masih kosong.<br />Pilih menu dulu ya!</p>
         )}
       </div>
       <div className="total-pr">
@@ -147,7 +147,7 @@ function Produk() {
         <section className="banner">
           <div>
             <h1>Daftar Produk</h1>
-            <p>Nikmati kelezatan ayam dengan harga terbaik!</p>
+            <p>Ayam enak, harga bersahabat!</p>
           </div>
           <img src="/image/blonde.jpg" alt="produk ayam geybok" className="banner-img d-none d-md-block" />
         </section>
@@ -199,14 +199,14 @@ function Produk() {
                   </Card>
                 </Col>
               ))}
-              {!daftar.length && <p className="kosong-pr">Belum ada produk di kategori ini.</p>}
+              {!daftar.length && <p className="kosong-pr">Belum ada menu di sini.</p>}
             </Row>
           </Col>
 
           {/* KERANJANG (desktop) */}
           <Col lg={3} className="d-none d-lg-block">
             <aside className="panel-keranjang" id="panel-keranjang">
-              <h2><i className="fa-solid fa-cart-shopping" /> Keranjang Saya</h2>
+              <h2><i className="fa-solid fa-cart-shopping" /> Keranjang</h2>
               {isiKeranjang}
             </aside>
           </Col>
@@ -216,7 +216,7 @@ function Produk() {
       {/* KERANJANG (mobile) */}
       <Offcanvas show={bukaCart} onHide={() => setBukaCart(false)} placement="end" className="offcanvas-geybok">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title><i className="fa-solid fa-cart-shopping" /> Keranjang Saya</Offcanvas.Title>
+          <Offcanvas.Title><i className="fa-solid fa-cart-shopping" /> Keranjang</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="d-flex flex-column">{isiKeranjang}</Offcanvas.Body>
       </Offcanvas>
@@ -224,7 +224,7 @@ function Produk() {
       {/* FOOTER */}
       <footer className="footer-pr">
         <h3>AYAM GEYBOK BANG JARWO</h3>
-        <p>Kuliner ayam dengan cita rasa khas dan harga terjangkau.</p>
+        <p>Ayam enak, harga bersahabat.</p>
         <div className="social">
           <a href="#" aria-label="Instagram"><i className="fab fa-instagram" /></a>
           <a href="#" aria-label="Facebook"><i className="fab fa-facebook" /></a>

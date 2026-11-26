@@ -22,7 +22,7 @@ function App() {
     .map((id) => menu.find((item) => item.id === Number(id)))
     .filter(Boolean);
 
-  // Routing sederhana berdasarkan alamat halaman, tanpa library tambahan.
+  // halaman ditentukan dari URL, jadi tanpa router
   const halaman = window.location.pathname.replace(/\/+$/, '') || '/';
 
   if (halaman === '/produk') return <Produk />;
@@ -31,11 +31,11 @@ function App() {
 
   return (
     <div className="bj-page">
-      {/* ===== HEADER / NAVBAR ===== */}
+      {/* header */}
       <Navbar expand="lg" className="navbar-bj">
         <Container fluid className="px-0">
           <Navbar.Brand href="#home">
-            <img src="/image/logo.jpg" alt="Logo UMKM" className="bj-logo" />
+            <img src="/image/logo.jpg" alt="Logo Ayam Geybok Bang Jarwo" className="bj-logo" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -54,7 +54,7 @@ function App() {
         </Container>
       </Navbar>
 
-      {/* ===== HERO ===== */}
+      {/* hero */}
       <section className="bj-hero" id="home">
         <Container fluid>
           <Row className="align-items-center justify-content-between gx-5 gy-4">
@@ -74,7 +74,7 @@ function App() {
         </Container>
       </section>
 
-      {/* ===== PRODUK UNGGULAN ===== */}
+      {/* produk unggulan */}
       <section className="bj-products" id="produk-unggulan">
         <h2>{konten.beranda.produkUnggulan}</h2>
         <Row className="bj-product-row">
@@ -95,7 +95,7 @@ function App() {
         </Row>
       </section>
 
-      {/* BAGIAN LOKASI */}
+      {/* lokasi */}
       <Container fluid className="location" id="lokasi">
         <Row className="align-items-center g-4">
           <Col lg={6}>
@@ -120,13 +120,13 @@ function App() {
         </Row>
       </Container>
 
-      {/* BAGIAN FOOTER */}
+      {/* footer */}
       <Container fluid as="footer" className="bj-footer">
         <Row className="justify-content-center text-center">
           <Col xs={12}>
             <h3>AYAM GEYBOK BANG JARWO</h3>
 
-            <p>Kuliner ayam dengan cita rasa khas dan harga terjangkau.</p>
+            <p>Ayam enak, harga bersahabat.</p>
 
             <Row className="justify-content-center">
               <Col xs="auto">

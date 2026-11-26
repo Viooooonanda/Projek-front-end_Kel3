@@ -1,4 +1,4 @@
-// DATA LOGIN ADMIN
+// akun untuk masuk ke panel admin
 export const DATA_LOGIN = [
   {
     username: 'Vionanda',

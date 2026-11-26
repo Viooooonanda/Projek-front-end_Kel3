@@ -1,11 +1,11 @@
-// Data menu dipakai bersama oleh halaman Produk, Pemesanan, dan Admin.
+// menu dipakai bareng di halaman produk, pemesanan, dan admin
 export const MENU_KEY = 'ayamGeybokMenu';
 export const CART_KEY = 'keranjangGeybok';
 
 const G = "/image/geybok.jpg", B = "/image/blonde.jpg", K = "/image/kriuk.jpg", E = "/image/empalGeybok.jpg", C = "/image/jengkolsemur.jpg";
 const g = s => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9Gc" + s + "&s=10";
 
-/* [nama, harga, gambar, kategori] - nomor produk mengikuti urutan lama */
+// [nama, harga, gambar, kategori] — id ikut urutan lama
 const DATA = [
   ["Paket Promo Happy 1",29000,G,"Makanan"],["Paket Promo Happy 2",29000,G,"Makanan"],["Paket Promo Happy 3",29000,B,"Makanan"],
   ["Paket Promo Semua Kenyang",109000,K,"Makanan"],["Paket Promo Ber-2 Puas",52000,G,"Makanan"],["Paket Promo Ber-2 Nikmat",52000,B,"Makanan"],
@@ -117,7 +117,7 @@ export function daftarKategori(menu = bacaMenu()) {
 }
 
 
-// untuk ubah kontent website melalui admin
+// teks website yang bisa diubah dari admin
 export const KONTEN_KEY = 'kontenWebsiteGeybok';
 
 const idDariMenu = (nama) => MENU_AWAL.find((m) => m.nama === nama)?.id;
@@ -125,7 +125,7 @@ const idDariMenu = (nama) => MENU_AWAL.find((m) => m.nama === nama)?.id;
 export const KONTEN_AWAL = {
     beranda: {
         judul: 'AYAM GEYBOK BANG JARWO',
-        deskripsi: 'Ayam Geybok Bang Jarwo hadir menyajikan kelezatan kuliner nusantara dengan cita rasa khas yang menggugah selera. Menggunakan bahan-bahan segar dan racikan bumbu spesial, kami siap memanjakan lidah anda dengan sensasi pedas gurih yang tiada tanding.',
+        deskripsi: 'Ayam geybok bumbu racikan sendiri. Gurihnya dapet, pedasnya pas, dan dibuat segar setiap hari. Cocok buat makan bareng keluarga di rumahan maupun di kantor.',
         tombolProduk: 'LIHAT PRODUK',
         produkUnggulan: 'Produk Unggulan',
         lokasiJudul: 'Lokasi',

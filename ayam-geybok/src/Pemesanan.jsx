@@ -25,7 +25,7 @@ function Pemesanan() {
   const [pilih, setPilih] = useState('');
   const [jumlah, setJumlah] = useState(1);
   const [err, setErr] = useState({});
-  const [step, setStep] = useState(null); // null | 'konfirmasi' | 'qris' | 'sukses'
+  const [step, setStep] = useState(null); // kosong | konfirmasi | qris | sukses
   const [pesanan, setPesanan] = useState(null);
   const [strukModal, setStrukModal] = useState(false);
 
@@ -64,11 +64,11 @@ function Pemesanan() {
     e.preventDefault();
     const hpBersih = hp.replace(/[\s-]/g, '');
     const baru = {
-      nama: nama.trim().length < 2 ? 'Nama wajib diisi.' : '',
-      hp: /^08\d{8,12}$/.test(hpBersih) ? '' : 'Masukkan nomor HP yang benar, contoh 08123456789.',
-      produk: items.length ? '' : 'Tambahkan minimal satu produk ke pesanan.',
-      jenisPesanan: jenisPesanan ? '' : 'Pilih jenis pesanan.',
-      bayar: bayar ? '' : 'Pilih metode pembayaran.',
+      nama: nama.trim().length < 2 ? 'Nama belum diisi.' : '',
+      hp: /^08\d{8,12}$/.test(hpBersih) ? '' : 'Nomor HP-nya kurang pas. Contoh: 08123456789',
+      produk: items.length ? '' : 'Pilih minimal satu menu dulu.',
+      jenisPesanan: jenisPesanan ? '' : 'Pilih dulu jenis pesanannya.',
+      bayar: bayar ? '' : 'Pilih dulu metode bayarnya.',
     };
     setErr(baru);
     if (Object.values(baru).some(Boolean)) return;
@@ -104,7 +104,7 @@ function Pemesanan() {
         waktu: new Date().toISOString(),
         items: itemDetail,
       });
-    } catch (e) { /* abaikan */ }
+    } catch { /* simpan gagal, tetap lanjut */ }
     if (pesanan.bayar === 'QRIS') setStep('qris');
     else selesai();
   };
@@ -116,9 +116,9 @@ function Pemesanan() {
   };
 
   const infoBayar = pesanan && (
-    pesanan.bayar === 'QRIS' ? 'Pembayaranmu akan kami cek. Terima kasih!'
-      : pesanan.bayar === 'Cash' ? 'Siapkan uang pas saat mengambil pesanan.'
-      : 'Pembayaran debit dilakukan saat pesanan diambil.');
+    pesanan.bayar === 'QRIS' ? 'Pembayaranmu akan kami cek ya.'
+      : pesanan.bayar === 'Cash' ? 'Siapkan uang pas pas ambil pesanan.'
+      : 'Debit dibayar pas pesanan diambil.');
 
   const daftarPesanan = (list) => list.map((c) => {
     const p = cari(c.id);
@@ -130,7 +130,7 @@ function Pemesanan() {
     );
   });
 
-  // Detail struk pembelian (nama, harga per item, subtotal)
+  // detail menu buat struk
   const strukItemDetail = (list = []) => list.map((c) => {
     const p = cari(c.id);
     return {
@@ -147,7 +147,7 @@ function Pemesanan() {
 
   const waktuStruk = (waktu) => (waktu ? new Date(waktu).toLocaleString('id-ID') : '-');
 
-  // Struk lengkap sebagai file HTML mandiri (untuk dicetak atau disimpan)
+  // struk versi file HTML, biar bisa disimpan
   const strukHtml = (p) => {
     const baris = strukItemDetail(p.items).map((c) =>
       `<tr><td>${htmlEscape(c.nama)} <small>× ${c.qty}</small></td>` +
@@ -175,14 +175,14 @@ tr td:last-child{text-align:right}
 <h2>Struk Pembelian</h2>
 ${kv('No. Struk', p.no || '')}
 ${kv('Waktu', waktuStruk(p.waktu))}
-${kv('Nama', p.nama || '')}
+${kv('Nama Pemesan', p.nama || '')}
 ${kv('Nomor HP', p.hp || '')}
 ${kv('Jenis Pesanan', p.jenisPesanan || '')}
-${kv('Pembayaran', p.bayar || '')}
+${kv('Metode Pembayaran', p.bayar || '')}
 ${catatanBaris}
 <table>${baris}</table>
 <div class="total"><span>Total Harga</span><b>${rupiah(p.total || 0)}</b></div>
-<p class="foot">Ayam Geybok Bang Jarwo - Terima kasih!</p>
+<p class="foot">Ayam Geybok Bang Jarwo — makasih ya!</p>
 </body></html>`;
   };
 
@@ -238,7 +238,7 @@ ${catatanBaris}
         <div className="judul d-flex align-items-center justify-content-between gap-3">
           <div>
             <h1>Form Pemesanan</h1>
-            <p>Isi data di bawah untuk melakukan pemesanan.</p>
+            <p>Silahkan isi data dan produk yang anda inginkan</p>
           </div>
           <img src="/image/geybok.jpg" alt="Ayam Geybok" className="judul-img d-none d-md-block" />
         </div>
@@ -249,7 +249,7 @@ ${catatanBaris}
             <Form.Group as={Col} md={6} controlId="nama" className="mb-3 mb-md-0">
               <Form.Label>Nama<span className="req">*</span></Form.Label>
               <Form.Control
-                type="text" placeholder="Masukkan nama" autoComplete="name"
+                type="text" placeholder="Nama kamu" autoComplete="name"
                 value={nama} onChange={(e) => setNama(e.target.value)} isInvalid={!!err.nama}
               />
               <Form.Control.Feedback type="invalid">{err.nama}</Form.Control.Feedback>
@@ -297,7 +297,7 @@ ${catatanBaris}
           <Form.Group className="mb-3" controlId="catatan">
             <Form.Label>Catatan</Form.Label>
             <Form.Control
-              as="textarea" rows={3} placeholder="Tambahkan catatan pesanan..."
+              as="textarea" rows={3} placeholder="Catatan kalau ada..."
               value={catatan} onChange={(e) => setCatatan(e.target.value)}
             />
           </Form.Group>
@@ -363,7 +363,7 @@ ${catatanBaris}
               );
             }) : (
               <p className="kosong">
-                Belum ada produk. Pilih menu di atas lalu klik Tambah, atau <a href="/produk">lihat halaman Produk</a>.
+                Belum ada menu. Pilih di atas terus klik Tambah, atau <a href="/produk">cek halaman Produk</a>.
               </p>
             )}
             <div className="total">
@@ -373,14 +373,14 @@ ${catatanBaris}
           </section>
 
           <Button type="submit" className="btn-submit w-100">SUBMIT</Button>
-          <p className="catatan-kecil">* Wajib diisi. Pastikan data pesanan sudah benar sebelum menekan Submit.</p>
+          <p className="catatan-kecil">* Wajib diisi. Cek dulu ya sebelum kirim.</p>
         </Form>
       </Container>
 
       {/* FOOTER */}
       <footer className="footer-bar">
         <h3>AYAM GEYBOK BANG JARWO</h3>
-        <p>Kuliner ayam dengan cita rasa khas dan harga terjangkau.</p>
+        <p>Ayam enak, harga bersahabat.</p>
         <div className="social">
           <a href="#" aria-label="Instagram"><i className="fab fa-instagram" /></a>
           <a href="#" aria-label="Facebook"><i className="fab fa-facebook" /></a>
@@ -396,7 +396,7 @@ ${catatanBaris}
       >
         {step === 'konfirmasi' && pesanan && (
           <>
-            <Modal.Header closeButton><Modal.Title>Periksa kembali pesananmu</Modal.Title></Modal.Header>
+            <Modal.Header closeButton><Modal.Title>Cek dulu pesananmu</Modal.Title></Modal.Header>
             <Modal.Body>
               <div className="kv"><span>Nama</span><span>{pesanan.nama}</span></div>
               <div className="kv"><span>Nomor HP</span><span>{pesanan.hp}</span></div>
@@ -422,7 +422,7 @@ ${catatanBaris}
                 <div className="tick"><i className="fa-solid fa-circle-check" /></div>
                 <h3>Pesanan berhasil </h3>
                 <div className="no-pesanan">{pesanan.no}</div>
-                <p>Terima kasih, {pesanan.nama}! {infoBayar}</p>
+                <p>Makasih, {pesanan.nama}! {infoBayar}</p>
               </div>
               {daftarPesanan(pesanan.items)}
               <div className="total"><span>Total Harga</span><b>{rupiah(pesanan.total)}</b></div>
@@ -445,19 +445,19 @@ ${catatanBaris}
                       src="/image/qris.jpg" alt="Kode QRIS"
                       onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling.style.display = 'block'; }}
                     />
-                    <div className="ph">Taruh gambar QRIS di <b>public/image/qris.jpg</b></div>
+                    <div className="ph">Taruh QRIS di <b>public/image/qris.jpg</b></div>
                     <p className="mt-2 mb-0"><b>{rupiah(pesanan.total)}</b></p>
                   </div>
                 </Col>
                 <Col md={7}>
-                  <b>Cara Pembayaran:</b>
+                  <b>Cara bayar:</b>
                   <ol className="cara">
-                    <li>Buka aplikasi e-wallet atau mobile banking.</li>
-                    <li>Pilih menu Scan QR atau QRIS.</li>
-                    <li>Arahkan kamera ke kode QRIS.</li>
-                    <li>Pastikan nominal pembayaran sudah sesuai.</li>
-                    <li>Konfirmasi pembayaran di aplikasimu.</li>
-                    <li>Klik tombol "Sudah Bayar" setelah transaksi berhasil.</li>
+                    <li>Buka e-wallet atau m-banking kamu.</li>
+                    <li>Pilih Scan QR / QRIS.</li>
+                    <li>Arahkan kamera ke QR-nya.</li>
+                    <li>Cek nominalnya dulu ya.</li>
+                    <li>Konfirmasi di aplikasi.</li>
+                    <li>Setelah bayar, klik "Sudah Bayar".</li>
                   </ol>
                 </Col>
               </Row>
@@ -483,7 +483,7 @@ ${catatanBaris}
             <>
               <div className="kv"><span>No. Struk</span><span>{pesanan.no}</span></div>
               <div className="kv"><span>Waktu</span><span>{waktuStruk(pesanan.waktu)}</span></div>
-              <div className="kv"><span>Nama Pemesana</span><span>{pesanan.nama}</span></div>
+              <div className="kv"><span>Nama Pemesan</span><span>{pesanan.nama}</span></div>
               <div className="kv"><span>Nomor HP</span><span>{pesanan.hp}</span></div>
               <div className="kv"><span>Metode Pembayaran</span><span>{pesanan.bayar}</span></div>
               {pesanan.catatan && <div className="kv"><span>Catatan</span><span>{pesanan.catatan}</span></div>}
@@ -492,7 +492,7 @@ ${catatanBaris}
                 {strukItemDetail(pesanan.items).map((c) => (
                   <div className="struk-item" key={c.id}>
                     <span className="struk-nm">{c.nama} <small>× {c.qty}</small></span>
-                    <span className="struk-tt">Harga {rupiah(c.harga)}</span>
+                    <span className="struk-tt">@ {rupiah(c.harga)}</span>
                     <span className="struk-sub">{rupiah(c.subtotal)}</span>
                   </div>
                 ))}
